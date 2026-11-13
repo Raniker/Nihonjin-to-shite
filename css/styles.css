@@ -646,6 +646,7 @@ main:has(.search:not(:placeholder-shown)) .home-sections { display: none; }
 .pad-draw { touch-action: none; cursor: crosshair; }
 
 .write-hint { text-align: center; }
+.write-option { justify-content: center; margin-top: 4px; }
 
 /* ---------- Escenas (chat) ---------- */
 .chat { display: grid; gap: 10px; margin-bottom: 16px; }

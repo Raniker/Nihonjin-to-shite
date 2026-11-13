@@ -10,6 +10,7 @@
 import { kanaGroups } from '../data/kana.js';
 import { drawGlyph, drawStrokes, scoreDrawing } from '../writing.js';
 import { speak } from '../speech.js';
+import { loadJSON, saveJSON } from '../storage.js';
 
 const SCRIPTS = { hiragana: 'あ Hiragana', katakana: 'ア Katakana' };
 
@@ -22,6 +23,14 @@ let state = null; // { script, kana, strokes, guide, result, lastScore }
 const PASS = 0.6;          // a partir de aquí "¡Muy bien!"
 const REVIEW_MS = 2500;    // cuánto tiempo se ve el modelo antes de borrar
 let retryTimer = null;
+
+// La guía es un "vistazo": se ve unos segundos y desaparece, para escribir de memoria
+const GUIDE_MS = 2000;
+let guideTimer = null;
+
+// Opción "Con guía": la guía aparece sola al empezar cada kana. Se recuerda en el celular.
+const AUTO_GUIDE_KEY = 'writeAutoGuide';
+let autoGuide = loadJSON(AUTO_GUIDE_KEY, false);
 
 function pickKana(previous) {
   const options = writable().filter(k => k !== previous);
@@ -54,7 +63,7 @@ export function writeView(script = 'hiragana') {
 
     <div class="write-actions">
       <button class="btn" data-write-clear>🧽 Borrar</button>
-      <button class="btn ${state.guide ? 'on' : ''}" data-guide-toggle aria-pressed="${state.guide}">👁 Guía</button>
+      <button class="btn" data-guide-toggle aria-pressed="false">👁 Ver guía</button>
       <!-- Dos botones en el mismo sitio: se muestra uno u otro según el estado -->
       <button class="btn primary" data-write-check>Comprobar</button>
       <button class="btn primary" data-write-next hidden>Siguiente →</button>
@@ -65,6 +74,10 @@ export function writeView(script = 'hiragana') {
       <canvas class="pad-guide"></canvas>
       <canvas class="pad-draw" aria-label="Zona para dibujar"></canvas>
     </div>
+    <label class="toggle write-option">
+      <input type="checkbox" data-auto-guide ${autoGuide ? 'checked' : ''}>
+      Con guía: mostrarla unos segundos al empezar cada kana
+    </label>
     <p class="hint write-hint">La comprobación compara la forma, no el orden de los trazos.</p>
   `;
 }
@@ -92,8 +105,9 @@ writeView.mount = () => {
   // Pointer Events: un solo API para dedo, lápiz y ratón.
   // Aquí sí ponemos listeners en el propio elemento: necesitamos seguir
   // el movimiento continuo de un elemento concreto, no clics sueltos.
-  // Si volvemos a esta pantalla con un repaso a medias, lo terminamos ya
+  // Si volvemos a esta pantalla con un repaso o una guía a medias, los terminamos ya
   if (retryTimer) finishReview();
+  hideGuide();
 
   let current = null;
   drawCanvas.addEventListener('pointerdown', (e) => {
@@ -116,6 +130,7 @@ writeView.mount = () => {
   redrawGuide();
   redrawStrokes();
   showResult();
+  if (autoGuide && state.result === null) showGuide();
 };
 
 function redrawStrokes() {
@@ -214,16 +229,38 @@ export function checkWriting() {
 
 export function nextWriting() {
   cancelReview();
+  hideGuide(); // la guía del kana anterior no debe verse en el nuevo
   state.kana = pickKana(state.kana);
   document.querySelector('.write-romaji').textContent = state.kana.romaji;
   document.querySelector('.write-target [data-speak]').dataset.speak = state.kana[state.script];
   clearWriting();
+  if (autoGuide) showGuide(); // modo "Con guía": vistazo al empezar el kana nuevo
 }
 
-export function toggleGuide() {
-  state.guide = !state.guide;
+export function setAutoGuide(on) {
+  autoGuide = on;
+  saveJSON(AUTO_GUIDE_KEY, on);
+  if (on && state.result === null) showGuide(); // al activarla, la vemos ya
+}
+
+// Muestra la guía GUIDE_MS milisegundos. Si se pulsa otra vez, el tiempo vuelve a empezar.
+export function showGuide() {
+  clearTimeout(guideTimer);
+  setGuide(true);
+  guideTimer = setTimeout(hideGuide, GUIDE_MS);
+}
+
+function hideGuide() {
+  clearTimeout(guideTimer);
+  guideTimer = null;
+  setGuide(false);
+}
+
+function setGuide(on) {
+  state.guide = on;
   const btn = document.querySelector('[data-guide-toggle]');
-  btn.classList.toggle('on', state.guide);
-  btn.setAttribute('aria-pressed', state.guide);
+  if (!btn?.isConnected) return; // ya no estamos en esta pantalla
+  btn.classList.toggle('on', on);
+  btn.setAttribute('aria-pressed', on);
   redrawGuide();
 }
