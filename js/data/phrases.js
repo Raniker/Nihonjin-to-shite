@@ -59,7 +59,7 @@ export const categories = [
       { id: 'res-01', jp: 'すみません', romaji: 'sumimasen', es: 'Disculpe (para llamar al camarero)', replies: [
         r('はい、どうぞ', 'Sí, dígame', ['res-03', 'res-05', 'res-06', 'res-09']),
       ] },
-      { id: 'res-02', jp: '二人です', romaji: 'futari desu', es: 'Somos dos', replies: [
+      { id: 'res-02', slot: 'people', jp: '{people}です', romaji: '{people} desu', es: 'Mesa para {people}', replies: [
         r('こちらへどうぞ', 'Por aquí, por favor'),
         r('満席です', 'Está lleno', ['con-20', 'con-21']),
         r('予約はありますか？', '¿Tienen reserva?', ['con-19']),
@@ -83,6 +83,16 @@ export const categories = [
         r('大盛りにしますか？', '¿Quiere ración grande?', ['con-01', 'con-25']),
         r('お飲み物はいかがですか？', '¿Quiere algo de beber?', ['res-06', 'con-02']),
         r('ご注文は以上でよろしいですか？', '¿Eso es todo?', ['con-05']),
+      ] },
+      { id: 'res-11', slot: 'things', jp: 'これを{things}ください', romaji: 'kore o {things} kudasai', es: 'Deme {things} de esto, por favor', replies: [
+        r('かしこまりました', 'Entendido'),
+        r('売り切れです', 'Está agotado', ['res-04']),
+        r('お飲み物はいかがですか？', '¿Quiere algo de beber?', ['res-06', 'con-02']),
+      ] },
+      { id: 'res-12', slot: 'time', jp: '{time}に予約できますか？', romaji: '{time} ni yoyaku dekimasu ka?', es: '¿Puedo reservar para {time}?', replies: [
+        r('はい、何名様ですか？', 'Sí, ¿cuántas personas?', ['res-02']),
+        r('その時間は満席です', 'A esa hora está lleno', ['con-21']),
+        r('お名前をお願いします', 'Su nombre, por favor', ['con-08']),
       ] },
       { id: 'res-06', jp: '水をください', romaji: 'mizu o kudasai', es: 'Agua, por favor', replies: [
         r('かしこまりました', 'Entendido'),
@@ -177,6 +187,10 @@ export const categories = [
       ] },
       { id: 'tax-06', jp: 'トランクを開けてもらえますか？', romaji: 'toranku o akete moraemasu ka?', es: '¿Puede abrir el maletero?', replies: [
         r('はい、どうぞ', 'Sí, adelante', ['con-07']),
+      ] },
+      { id: 'tax-07', slot: 'time', jp: '{time}にタクシーを呼んでもらえますか？', romaji: '{time} ni takushī o yonde moraemasu ka?', es: '¿Me puede pedir un taxi para {time}?', replies: [
+        r('かしこまりました', 'Entendido', ['con-07']),
+        r('どちらまでですか？', '¿A dónde va?', ['tax-02', 'tax-01']),
       ] },
     ],
   },
@@ -353,6 +367,11 @@ export const categories = [
         r('500円です', '500 yenes', ['con-07']),
         r('無料です', 'Es gratis', ['con-07']),
         r('あちらでお支払いください', 'Pague allí, por favor', ['con-05']),
+      ] },
+      { id: 'tem-08', slot: 'tickets', jp: 'チケットを{tickets}ください', romaji: 'chiketto o {tickets} kudasai', es: '{tickets}, por favor', replies: [
+        r('大人ですか？', '¿Son de adulto?', ['con-01']),
+        r('1000円です', '1.000 yenes', ['con-16', 'con-17']),
+        r('本日は売り切れです', 'Hoy están agotadas', ['con-05']),
       ] },
       { id: 'tem-02', jp: '写真を撮ってもいいですか？', romaji: 'shashin o totte mo ii desu ka?', es: '¿Puedo hacer fotos?', replies: [
         r('はい、どうぞ', 'Sí, adelante', ['con-07']),

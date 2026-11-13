@@ -43,6 +43,7 @@ export function kanaView(script = 'hiragana') {
     <h1>Kana</h1>
     <div class="tabs">${tabs}</div>
     <p class="hint">${SCRIPTS[script].note} Toca un carácter para escucharlo.</p>
+    <a class="btn write-link" href="#/escribir/${script}">✍️ Practicar escritura de ${SCRIPTS[script].label.toLowerCase()}</a>
 
     <!-- Sin JavaScript: el CSS usa :has() para ocultar el romaji cuando está marcado -->
     <label class="toggle"><input type="checkbox" id="hide-romaji"> Ocultar romaji (para practicar)</label>

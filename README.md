@@ -11,7 +11,12 @@ PWA para aprender japonés básico de cara a un viaje de turismo y para usarla *
 ### Frases por categoría
 Restaurante 🍜, Tren 🚄, Taxi 🚕, Hotel 🏨, Tiendas 🛍️, Farmacia 💊, Direcciones 🧭, Onsen ♨️, Templos ⛩️, Emergencias 🚨 y Responder 🙋: 103 frases, cada una con japonés, romaji y traducción al español.
 
-Algunas frases tienen un **hueco que puedes cambiar**: "Un billete a ＿＿" (17 estaciones), "¿Dónde está ＿＿?" (farmacia, cajero, consigna…) y "Tengo alergia a ＿＿".
+Algunas frases tienen un **hueco que puedes cambiar**:
+- "Un billete a ＿＿" (17 estaciones)
+- "¿Dónde está ＿＿?" (farmacia, cajero, consigna…)
+- "Tengo alergia a ＿＿"
+- "Mesa para ＿＿", "Deme ＿＿ de esto", "＿＿ entradas"
+- reservas y taxis "para las ＿＿"
 
 En el inicio hay un **buscador** que no distingue tildes ni mayúsculas.
 
@@ -38,8 +43,16 @@ En **Mis datos** puedes **exportar** a un archivo `.json` tus datos, favoritas y
 ### Kana
 Tablas de hiragana y katakana (básicos, con tenten/maru y combinados). Toca un carácter para escucharlo. Hay una opción para ocultar el romaji y practicar, y una sección de trucos de lectura con palabras útiles para el viaje.
 
+### Escribir kana ✍️
+Dibuja con el dedo el kana que se pide. Puedes activar una guía para calcarlo. Al comprobar, la app compara tu dibujo con el carácter modelo: mira la forma, no el orden de los trazos.
+
+### Escenas 🎭
+Cinco conversaciones completas: restaurante, hotel, tren, farmacia y taxi.
+- Lo que te dicen aparece en japonés, con audio. Intenta entenderlo antes de destaparlo.
+- Lo que dices tú aparece en español. Intenta decirlo en japonés antes de destaparlo.
+
 ### Números y precios
-Números de referencia con kanji, kana y romaji; los irregulares van destacados. Incluye un **conversor de precios**: escribes `3500` y muestra 3,500円 → 三千五百円 → さんぜんごひゃくえん → *sanzen gohyaku en*, con audio. El botón 🎲 genera precios al azar para practicar.
+Números de referencia con kanji, kana y romaji; los irregulares van destacados. Incluye una sección de **contadores**: personas 人, cosas つ, entradas 枚 y horas 時. Incluye un **conversor de precios**: escribes `3500` y muestra 3,500円 → 三千五百円 → さんぜんごひゃくえん → *sanzen gohyaku en*, con audio. El botón 🎲 genera precios al azar para practicar.
 
 ### Quiz con repaso espaciado 🧠
 Cinco mazos: frases (en los dos sentidos), **entender respuestas** (lo que te dicen los japoneses), hiragana, katakana, y números y precios, con preguntas de "¿qué precio oyes?". Funciona con el **sistema Leitner**:
@@ -107,6 +120,8 @@ js/slots.js            frases con hueco: valor elegido y relleno del texto
 js/search.js           buscador de frases
 js/wakelock.js         mantener la pantalla encendida
 js/backup.js           exportar/importar copia de seguridad
+js/writing.js          dibujo en canvas y corrección de kana escritos
+js/data/scenes.js      escenas (conversaciones completas)
 js/data/slots.js       opciones de los huecos (estaciones, lugares, alérgenos)
 js/data/medical.js     enfermedades y grupos sanguíneos en japonés
 js/decks.js            mazos del quiz generados a partir de los datos

@@ -1,6 +1,37 @@
 // Números y precios: #/numeros
 
 import { readNumber, readPrice, MAX_NUMBER } from '../numbers.js';
+import { people, tickets, things, times } from '../data/slots.js';
+
+// Tarjetas de un contador (reutiliza el estilo de .num-cell)
+function counterCells(list) {
+  return list.map(c => `
+    <button class="num-cell ${c.irregular ? 'irregular' : ''}" data-speak="${c.kana}">
+      <span class="n-kanji" lang="ja">${c.jp}</span>
+      <span class="n-kana" lang="ja">${c.kana}</span>
+      <span class="n-romaji">${c.romaji}</span>
+    </button>
+  `).join('');
+}
+
+function countersSection() {
+  const wholeHours = times.filter(t => !t.id.endsWith('h')); // sin las "y media"
+  return `
+    <h2 class="section-title">Contadores</h2>
+    <div class="explain">
+      En japonés el número cambia según <strong>qué cuentas</strong>: personas (人), objetos planos
+      como entradas o billetes (枚), cosas en general (つ) u horas (時). Los de borde rojo son irregulares.
+    </div>
+    <h3 class="sub-title">Personas · 人 <small>"Mesa para dos" → 二人です</small></h3>
+    <div class="num-grid">${counterCells(people)}</div>
+    <h3 class="sub-title">Cosas · つ <small>"Deme dos de esto" → 二つください</small></h3>
+    <div class="num-grid">${counterCells(things)}</div>
+    <h3 class="sub-title">Entradas y billetes · 枚</h3>
+    <div class="num-grid">${counterCells(tickets)}</div>
+    <h3 class="sub-title">Horas · 時 <small>"y media" = 半 (han): 7時半</small></h3>
+    <div class="num-grid">${counterCells(wholeHours)}</div>
+  `;
+}
 
 // Números de referencia. "irregular" marca los que cambian de sonido.
 const BASICS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -63,6 +94,8 @@ export function numbersView() {
     <h2 class="section-title">Decenas, centenas y miles</h2>
     <div class="num-grid">${BIG.map(numberCell).join('')}</div>
     <p class="hint">Los de borde rojo son irregulares: el sonido cambia.</p>
+
+    ${countersSection()}
 
     <h2 class="section-title">Conversor de precios</h2>
     <div class="price-tool">

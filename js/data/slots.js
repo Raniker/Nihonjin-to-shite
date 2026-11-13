@@ -55,4 +55,59 @@ export const allergens = [
   { id: 'daizu', jp: '大豆', romaji: 'daizu', name: 'Soja', es: 'a la soja' },
 ];
 
-export const slotOptions = { station: stations, place: places, allergen: allergens };
+// ---------- Contadores ----------
+// En japonés los números llevan un "contador" según QUÉ cuentas:
+//   personas → 人 (nin), objetos planos (entradas, billetes) → 枚 (mai),
+//   cosas en general → つ (tsu, con números japoneses nativos).
+// Y cada contador tiene sus irregularidades: 1 y 2 personas son "hitori" y "futari".
+// "irregular" marca las lecturas que no siguen la regla (para destacarlas).
+
+export const people = [
+  { id: '1', jp: '一人', kana: 'ひとり', romaji: 'hitori', es: 'una persona', irregular: true },
+  { id: '2', jp: '二人', kana: 'ふたり', romaji: 'futari', es: 'dos', irregular: true },
+  { id: '3', jp: '三人', kana: 'さんにん', romaji: 'sannin', es: 'tres' },
+  { id: '4', jp: '四人', kana: 'よにん', romaji: 'yonin', es: 'cuatro', irregular: true },
+  { id: '5', jp: '五人', kana: 'ごにん', romaji: 'gonin', es: 'cinco' },
+  { id: '6', jp: '六人', kana: 'ろくにん', romaji: 'rokunin', es: 'seis' },
+];
+
+export const tickets = [
+  { id: '1', jp: '一枚', kana: 'いちまい', romaji: 'ichimai', es: '1 entrada' },
+  { id: '2', jp: '二枚', kana: 'にまい', romaji: 'nimai', es: '2 entradas' },
+  { id: '3', jp: '三枚', kana: 'さんまい', romaji: 'sanmai', es: '3 entradas' },
+  { id: '4', jp: '四枚', kana: 'よんまい', romaji: 'yonmai', es: '4 entradas' },
+  { id: '5', jp: '五枚', kana: 'ごまい', romaji: 'gomai', es: '5 entradas' },
+];
+
+export const things = [
+  { id: '1', jp: '一つ', kana: 'ひとつ', romaji: 'hitotsu', es: 'uno', irregular: true },
+  { id: '2', jp: '二つ', kana: 'ふたつ', romaji: 'futatsu', es: 'dos', irregular: true },
+  { id: '3', jp: '三つ', kana: 'みっつ', romaji: 'mittsu', es: 'tres', irregular: true },
+  { id: '4', jp: '四つ', kana: 'よっつ', romaji: 'yottsu', es: 'cuatro', irregular: true },
+  { id: '5', jp: '五つ', kana: 'いつつ', romaji: 'itsutsu', es: 'cinco', irregular: true },
+];
+
+// Horas: las generamos con código en lugar de escribir 24 entradas a mano.
+// Ojo a las irregulares: 4時 = yoji (no yonji), 7時 = shichiji, 9時 = kuji.
+const HOUR_KANA = ['いち', 'に', 'さん', 'よ', 'ご', 'ろく', 'しち', 'はち', 'く', 'じゅう', 'じゅういち', 'じゅうに'];
+const HOUR_ROMAJI = ['ichi', 'ni', 'san', 'yo', 'go', 'roku', 'shichi', 'hachi', 'ku', 'jū', 'jūichi', 'jūni'];
+const IRREGULAR_HOURS = [4, 7, 9];
+
+export const times = HOUR_KANA.flatMap((kana, i) => {
+  const h = i + 1;
+  const article = h === 1 ? 'la' : 'las'; // "la 1:00" pero "las 2:00"
+  const irregular = IRREGULAR_HOURS.includes(h);
+  return [
+    { id: `${h}`, jp: `${h}時`, kana: `${kana}じ`, romaji: `${HOUR_ROMAJI[i]}ji`, es: `${article} ${h}:00`, irregular },
+    // 半 (han) = "y media"
+    { id: `${h}h`, jp: `${h}時半`, kana: `${kana}じはん`, romaji: `${HOUR_ROMAJI[i]}ji han`, es: `${article} ${h}:30`, irregular },
+  ];
+});
+
+export const slotOptions = {
+  station: stations, place: places, allergen: allergens,
+  people, tickets, things, time: times,
+};
+
+// Valor inicial de cada hueco si no has elegido otro (si no está aquí, se usa el primero)
+export const slotDefaults = { people: '2', tickets: '2', time: '7' };

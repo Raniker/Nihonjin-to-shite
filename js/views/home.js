@@ -56,6 +56,8 @@ export function homeView() {
         <a class="card" href="#/kana/hiragana"><span class="icon">あ</span><span class="title">Kana</span><span class="sub">Hiragana y katakana</span></a>
         <a class="card" href="#/numeros"><span class="icon">¥</span><span class="title">Números y precios</span><span class="sub">Con conversor</span></a>
         <a class="card" href="#/quiz"><span class="icon">🧠</span><span class="title">Quiz</span><span class="sub">Repaso espaciado</span></a>
+        <a class="card" href="#/escenas"><span class="icon">🎭</span><span class="title">Escenas</span><span class="sub">Conversaciones completas</span></a>
+        <a class="card" href="#/escribir/hiragana"><span class="icon">✍️</span><span class="title">Escribir kana</span><span class="sub">Con el dedo</span></a>
         <a class="card" href="#/mis-datos"><span class="icon">✎</span><span class="title">Mis datos</span><span class="sub">Hotel, alergias…</span></a>
       </div>
     </div>

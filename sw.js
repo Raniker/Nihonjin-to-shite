@@ -6,7 +6,7 @@
 // Así el navegador detecta un sw.js distinto, descarga todo de nuevo
 // y borra la caché vieja.
 
-const VERSION = 'v4';
+const VERSION = 'v5';
 const CACHE = `nihongo-${VERSION}`;
 
 // Todos los archivos que necesita la app para funcionar offline.
@@ -34,6 +34,10 @@ const FILES = [
   './js/search.js',
   './js/wakelock.js',
   './js/backup.js',
+  './js/writing.js',
+  './js/data/scenes.js',
+  './js/views/write.js',
+  './js/views/scenes.js',
   './js/data/phrases.js',
   './js/data/kana.js',
   './js/data/slots.js',

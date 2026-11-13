@@ -8,6 +8,8 @@ import { numbersView, priceOutput, randomPrice } from './views/numbers.js';
 import { quizView, answerQuiz, nextQuiz, restartQuiz } from './views/quiz.js';
 import { emergencyView } from './views/emergency.js';
 import { profileView, saveProfileForm } from './views/profile.js';
+import { writeView, clearWriting, checkWriting, nextWriting, toggleGuide } from './views/write.js';
+import { scenesView, revealLine, nextLine, restartScene } from './views/scenes.js';
 import { speak } from './speech.js';
 import { toggleFavorite, isFavorite } from './favorites.js';
 import { setSlot } from './slots.js';
@@ -23,7 +25,11 @@ import { exportBackup, readBackup, applyBackup } from './backup.js';
 //   #/quiz/hiragana        → quizView('hiragana')
 //   #/emergencia           → emergencyView()
 //   #/mis-datos            → profileView()
+//   #/escribir/hiragana    → writeView('hiragana')
+//   #/escenas/hotel        → scenesView('hotel')
 const routes = {
+  escribir: writeView,
+  escenas: scenesView,
   '': homeView,
   frases: phrasesView,
   mostrar: showView,
@@ -50,6 +56,9 @@ function render() {
   // El CSS usa este atributo, p. ej. para ocultar la barra en modo "mostrar"
   document.body.dataset.view = name;
   app.innerHTML = view(...params);
+  // Algunas vistas necesitan preparar algo cuando su HTML ya está en la página
+  // (p. ej. medir un canvas y escuchar el dedo). Si la vista define "mount", la llamamos.
+  view.mount?.(...params);
   keepScreenOn(KEEP_AWAKE.includes(name));
 }
 
@@ -101,6 +110,15 @@ document.addEventListener('click', (e) => {
 
   if (e.target.closest('[data-export]')) return exportBackup();
 
+  if (e.target.closest('[data-write-clear]')) return clearWriting();
+  if (e.target.closest('[data-write-check]')) return checkWriting();
+  if (e.target.closest('[data-write-next]')) return nextWriting();
+
+  const revealBtn = e.target.closest('[data-scene-reveal]');
+  if (revealBtn) return revealLine(Number(revealBtn.dataset.sceneReveal));
+  if (e.target.closest('[data-scene-next]')) return nextLine();
+  if (e.target.closest('[data-scene-restart]')) return restartScene();
+
   if (e.target.closest('[data-random-price]')) {
     const input = document.querySelector('[data-price-input]');
     input.value = randomPrice();
@@ -143,7 +161,8 @@ document.addEventListener('change', (e) => {
     render(); // la frase cambia: re-pintamos la vista
     return;
   }
-  if (e.target.matches('[data-import]')) importBackup(e.target);
+  if (e.target.matches('[data-import]')) return importBackup(e.target);
+  if (e.target.matches('[data-guide]')) toggleGuide(e.target.checked);
 });
 
 async function importBackup(input) {

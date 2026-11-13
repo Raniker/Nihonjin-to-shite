@@ -12,6 +12,7 @@ Qué hace la app: [README.md](README.md). Estado y próximas ideas: [ROADMAP.md]
 - HTML + CSS + **JavaScript puro con módulos ES**. Sin frameworks, sin npm, sin paso de build.
 - **Rutas relativas** siempre (`./js/...`, `href="css/..."`): la app vive en `/Nihonjin-to-shite/` en GitHub Pages.
 - Router por hash (`#/ruta/param`) en `js/app.js`. Cada vista es una función que devuelve un string HTML.
+  Si necesita preparar algo tras pintarse (p. ej. un canvas), define `vista.mount = () => {...}` y el router la llama.
 - Eventos por **delegación** en `app.js` con atributos `data-*`; no añadir listeners por elemento.
 - Los datos (`js/data/`) van separados de la lógica. El quiz (`js/decks.js`) se genera a partir de ellos.
 
@@ -19,8 +20,9 @@ Qué hace la app: [README.md](README.md). Estado y próximas ideas: [ROADMAP.md]
 1. **Cualquier cambio en archivos de la app → subir `VERSION` en `sw.js`.** Si no, los celulares siguen con la versión en caché.
 2. **Archivo nuevo en `css/`, `js/` o `icons/` → añadirlo a `FILES` en `sw.js`.** Comprobar con `node tools/check-sw.mjs`.
 3. **No cambiar los `id`** de frases (`res-01`…) ni el formato de ids de tarjetas: las favoritas y el progreso del quiz se guardan por id.
-4. Las frases con hueco usan `{station}`, `{place}` o `{allergen}` en `jp`, `romaji` **y** `es`; mostrarlas siempre con `fillPhrase()`.
-5. Las respuestas con `next` deben apuntar a ids que existan.
+4. Las frases con hueco usan `{slot}` (`station`, `place`, `allergen`, `people`, `things`, `tickets`, `time`) en `jp`, `romaji` **y** `es`; mostrarlas siempre con `fillPhrase()`.
+5. Las respuestas con `next` y los pasos `me` de las escenas deben apuntar a ids de frases que existan.
+6. Si cambias la corrección de escritura (`js/writing.js`), vuelve a calibrar `PERFECT`/`ZERO_AT` probando en un navegador real.
 
 ## Seguridad
 - **Nunca subir credenciales**: tokens, claves de API, contraseñas, `.env`, claves privadas. El repositorio es **público** y el historial de git es permanente: borrar el secreto en un commit posterior no lo elimina.
