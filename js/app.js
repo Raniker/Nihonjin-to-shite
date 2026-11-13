@@ -3,6 +3,8 @@
 import { homeView } from './views/home.js';
 import { phrasesView } from './views/phrases.js';
 import { showView } from './views/show.js';
+import { kanaView } from './views/kana.js';
+import { numbersView, priceOutput, randomPrice } from './views/numbers.js';
 import { speak } from './speech.js';
 import { toggleFavorite } from './favorites.js';
 
@@ -10,10 +12,14 @@ import { toggleFavorite } from './favorites.js';
 //   #/                     → homeView()
 //   #/frases/restaurante   → phrasesView('restaurante')
 //   #/mostrar/res-04       → showView('res-04')
+//   #/kana/katakana        → kanaView('katakana')
+//   #/numeros              → numbersView()
 const routes = {
   '': homeView,
   frases: phrasesView,
   mostrar: showView,
+  kana: kanaView,
+  numeros: numbersView,
 };
 
 const app = document.getElementById('app');
@@ -70,8 +76,24 @@ document.addEventListener('click', (e) => {
   if (e.target.closest('[data-fullscreen]')) {
     if (document.fullscreenElement) document.exitFullscreen();
     else document.documentElement.requestFullscreen().catch(() => {});
+    return;
+  }
+
+  if (e.target.closest('[data-random-price]')) {
+    const input = document.querySelector('[data-price-input]');
+    input.value = randomPrice();
+    updatePrice(input);
   }
 });
+
+// "input" se dispara con cada tecla que cambia el valor de un campo
+document.addEventListener('input', (e) => {
+  if (e.target.matches('[data-price-input]')) updatePrice(e.target);
+});
+
+function updatePrice(input) {
+  document.getElementById('price-out').innerHTML = priceOutput(input.value);
+}
 
 function showAnswer(reply) {
   document.querySelectorAll('.reply.selected').forEach(el => el.classList.remove('selected'));

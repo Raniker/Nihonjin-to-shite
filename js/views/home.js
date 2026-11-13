@@ -34,8 +34,8 @@ export function homeView() {
 
     <h2 class="section-title">Practicar</h2>
     <div class="grid">
-      <a class="card disabled"><span class="icon">あ</span><span class="title">Kana</span><span class="sub">Próximamente</span></a>
-      <a class="card disabled"><span class="icon">¥</span><span class="title">Números y precios</span><span class="sub">Próximamente</span></a>
+      <a class="card" href="#/kana/hiragana"><span class="icon">あ</span><span class="title">Kana</span><span class="sub">Hiragana y katakana</span></a>
+      <a class="card" href="#/numeros"><span class="icon">¥</span><span class="title">Números y precios</span><span class="sub">Con conversor</span></a>
       <a class="card disabled"><span class="icon">🧠</span><span class="title">Quiz</span><span class="sub">Próximamente</span></a>
     </div>
   `;

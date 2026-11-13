@@ -20,6 +20,12 @@ Toca una frase para verla en grande y enseñársela a quien te atiende. Debajo a
 - Tiene un botón de pantalla completa (⛶).
 - El botón Atrás de Android vuelve a la lista.
 
+### Kana
+Tablas de hiragana y katakana (básicos, con tenten/maru y combinados). Toca un carácter para escucharlo. Hay una opción para ocultar el romaji y practicar, y una sección de trucos de lectura con palabras útiles para el viaje.
+
+### Números y precios
+Números de referencia con kanji, kana y romaji; los irregulares van destacados. Incluye un **conversor de precios**: escribes `3500` y muestra 3,500円 → 三千五百円 → さんぜんごひゃくえん → *sanzen gohyaku en*, con audio. El botón 🎲 genera precios al azar para practicar.
+
 ### Favoritas ⭐
 Marca las frases que más usas y aparecerán al principio de la pantalla de inicio. Se guardan en el celular (`localStorage`).
 
@@ -44,7 +50,9 @@ css/styles.css         estilos, tema claro/oscuro automático
 js/app.js              router por hash (#/...) y eventos globales
 js/speech.js           síntesis de voz (Web Speech API)
 js/favorites.js        favoritas en localStorage
+js/numbers.js          conversión de números y precios a japonés
 js/data/phrases.js     frases y respuestas (solo datos)
+js/data/kana.js        tablas de hiragana y katakana
 js/views/              una función por pantalla que devuelve HTML
 ```
 

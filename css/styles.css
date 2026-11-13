@@ -221,6 +221,129 @@ body[data-view="mostrar"] .topbar { display: none; }
 .reply .r-es { display: none; } /* la traducción solo se ve en el panel */
 .reply.selected { border-color: var(--accent); background: var(--accent-soft); }
 
+/* ---------- Kana ---------- */
+.tabs { display: flex; gap: 8px; margin-bottom: 12px; }
+.tab {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+.toggle { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: .9rem; }
+
+/* La rejilla lee --cols, que cada grupo define en su atributo style */
+.kana-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  gap: 6px;
+}
+.kana-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 0;
+  font: inherit;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.kana-cell.empty { visibility: hidden; }
+.k-char { font-size: 1.6rem; line-height: 1.2; }
+.k-romaji { font-size: .75rem; color: var(--muted); }
+
+/* :has() = "si dentro de main hay un #hide-romaji marcado..." → CSS que reacciona sin JS */
+main:has(#hide-romaji:checked) .k-romaji { visibility: hidden; }
+
+.tips { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.tip-rule { font-size: .85rem; color: var(--muted); margin-bottom: 2px; }
+.tip-word {
+  width: 100%;
+  padding: 10px 12px;
+  text-align: left;
+  font: inherit;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.tip-word [lang="ja"] { font-size: 1.2rem; font-weight: 600; }
+
+/* ---------- Números y precios ---------- */
+.explain {
+  padding: 12px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: .95rem;
+}
+
+/* auto-fill + minmax: tantas columnas como quepan, de al menos 96px */
+.num-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: 8px;
+}
+.num-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 4px;
+  font: inherit;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.num-cell.irregular { border: 2px solid var(--accent); }
+.n-digit { font-size: 1.3rem; font-weight: 700; }
+.n-kanji { font-size: 1.1rem; }
+.n-kana { font-size: .85rem; }
+.n-romaji { font-size: .75rem; color: var(--muted); }
+
+.price-input-row { display: flex; gap: 8px; }
+.price-input-row input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px;
+  font: inherit;
+  font-size: 1.4rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.btn {
+  padding: 10px 14px;
+  font: inherit;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.price-out {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0 32px;
+  padding: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.price-text { flex: 1; min-width: 0; }
+.p-digits { font-size: 1.6rem; font-weight: 700; }
+.p-kanji { font-size: 1.2rem; }
+.p-romaji { color: var(--accent); font-style: italic; }
+
 .notice {
   padding: 12px;
   margin-bottom: 16px;

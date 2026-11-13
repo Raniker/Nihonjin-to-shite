@@ -17,10 +17,12 @@ Leyenda: ✅ hecho · 🚧 en curso · ⏳ pendiente · 💡 idea para más adel
 - [x] Pantalla completa
 - [x] Favoritas guardadas en `localStorage`
 
-## ⏳ Fase 2 — Kana, números y precios
-- [ ] Tablas de hiragana y katakana con audio
-- [ ] Números del 1 al 10.000 generados por código (contadores, 百, 千, 万)
-- [ ] Lectura de precios en yenes (p. ej., 3.500円 → *sanzen gohyaku en*)
+## ✅ Fase 2 — Kana, números y precios
+- [x] Tablas de hiragana y katakana con audio (básicos, tenten/maru, combinados)
+- [x] Opción para ocultar el romaji y practicar
+- [x] Trucos de lectura: ー, っ, ゃゅょ y は/を como partículas
+- [x] Números del 0 al 99.999.999 generados por código, con irregulares (300, 600, 800, 3000, 8000)
+- [x] Conversor de precios en yenes, con el caso especial 4円 → *yo en*
 
 ## ⏳ Fase 3 — Quiz con repaso espaciado
 - [ ] Preguntas sobre frases, kana y números
