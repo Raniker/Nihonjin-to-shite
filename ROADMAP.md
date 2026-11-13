@@ -42,12 +42,20 @@ Leyenda: ✅ hecho · 🚧 en curso · ⏳ pendiente · 💡 idea para más adel
 - [x] Publicada en GitHub Pages desde la rama `master`: https://raniker.github.io/Nihonjin-to-shite/
 - [x] Flujo: trabajar en `dev` → subir `VERSION` en `sw.js` → `node tools/check-sw.mjs` → fusionar en `master` → push
 
-## 💡 Ideas pendientes
-- [ ] **Frases con hueco**: 「＿＿まで一枚ください」 con lista de estaciones, 「＿＿アレルギーがあります」 con tus alergias
-- [ ] **Ficha de emergencia**: 警察 110 · 救急 119, dirección del hotel en japonés, alergias y medicinas
-- [ ] **Buscador** de frases
-- [ ] **Mantener la pantalla encendida** en modo mostrar (Wake Lock API)
-- [ ] Revisar las respuestas genéricas (horarios del hotel, alergias) con los datos reales del viaje
+## ✅ Fase 6 — Herramientas de viaje
+- [x] **Mis datos**: hotel, alergias, enfermedades, medicamentos, grupo sanguíneo y contactos (solo en el celular)
+- [x] **Ficha de emergencia**: llamar al 110, 119 y a la Japan Visitor Hotline con un toque; tus datos en japonés para enseñar; "lléveme a esta dirección"
+- [x] **Frases con hueco**: estación (17), lugar (12) y alergia (12), con selector en el modo mostrar
+- [x] **Buscador** en el inicio, sin distinguir tildes ni mayúsculas, que también busca en las opciones de los huecos
+- [x] **Pantalla siempre encendida** en el modo mostrar y en la ficha (Wake Lock API)
+- [x] **Respuestas con datos reales**: la frase de alergia usa por defecto tu alergia de "Mis datos"
 
-## 💡 Al final — Conversación encadenada
-Después de la respuesta del japonés, sugerir cómo contestarle. Cada respuesta enlazaría a tus posibles frases siguientes, y así se formaría un árbol de conversación. Se deja para el final porque lo complejo es escribir y revisar todo ese contenido.
+## ✅ Fase 7 — Conversación encadenada
+- [x] Nueva categoría "Responder" con 33 frases cortas para contestar
+- [x] 142 respuestas enlazan con "Puedes contestar:" → tocar una abre esa frase con sus propias respuestas, y así sigue la conversación
+- [x] El botón Atrás recorre la conversación hacia atrás
+
+## 💡 Ideas para el futuro
+- [ ] Más frases y categorías (onsen, templos, farmacia, taxi)
+- [ ] Practicar en el quiz la comprensión de las respuestas del japonés
+- [ ] Exportar e importar el progreso y "Mis datos" (copia de seguridad)

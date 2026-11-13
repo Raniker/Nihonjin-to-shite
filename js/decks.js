@@ -18,9 +18,11 @@
 import { categories } from './data/phrases.js';
 import { kanaGroups } from './data/kana.js';
 import { readNumber, readPrice } from './numbers.js';
+import { fillPhrase } from './slots.js';
 
 function phraseCards() {
-  return categories.flatMap(cat => cat.phrases.flatMap(p => [
+  // fillPhrase: las frases con hueco salen con el valor elegido (p. ej. tu estación)
+  return categories.flatMap(cat => cat.phrases.map(fillPhrase).flatMap(p => [
     // Japonés → español (comprender)
     {
       id: `fr:${p.id}:ja`, ask: '¿Qué significa?',

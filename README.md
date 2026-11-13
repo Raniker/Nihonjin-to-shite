@@ -9,7 +9,11 @@ PWA para aprender japonés básico de cara a un viaje de turismo y para usarla *
 ## Funciones
 
 ### Frases por categoría
-Restaurante 🍜, Tren 🚄, Hotel 🏨, Tiendas 🛍️, Direcciones 🧭 y Emergencias 🚨: 42 frases, cada una con japonés, romaji y traducción al español.
+Restaurante 🍜, Tren 🚄, Hotel 🏨, Tiendas 🛍️, Direcciones 🧭, Emergencias 🚨 y Responder 🙋: 76 frases, cada una con japonés, romaji y traducción al español.
+
+Algunas frases tienen un **hueco que puedes cambiar**: "Un billete a ＿＿" (17 estaciones), "¿Dónde está ＿＿?" (farmacia, cajero, consigna…) y "Tengo alergia a ＿＿".
+
+En el inicio hay un **buscador** que no distingue tildes ni mayúsculas.
 
 ### Audio en japonés
 El botón 🔊 pronuncia la frase con la voz japonesa del sistema mediante la Web Speech API. No descarga ningún archivo de audio.
@@ -19,8 +23,14 @@ Si no suena en japonés, en Android ve a **Ajustes → Sistema → Idioma → Sa
 ### Modo "mostrar" con respuestas
 Toca una frase para verla en grande y enseñársela a quien te atiende. Debajo aparecen **respuestas probables en japonés**: la otra persona toca la suya y tú ves la traducción al español en un panel destacado.
 - Cada frase tiene sus respuestas propias, y siempre aparecen también las comunes (sí, no, espere un momento, es por allí…).
-- Tiene un botón de pantalla completa (⛶).
-- El botón Atrás de Android vuelve a la lista.
+- **Conversación encadenada:** junto a la traducción aparece "Puedes contestar:" con tus posibles respuestas. Al tocar una, se muestra esa frase en grande con sus propias respuestas.
+- Tiene un botón de pantalla completa (⛶) y la pantalla no se apaga mientras la enseñas.
+- El botón Atrás de Android recorre la conversación hacia atrás.
+
+### Ficha de emergencia 🆘
+- Botones para llamar con un toque al **110** (policía), al **119** (ambulancia y bomberos) y a la **Japan Visitor Hotline** (24 h, en inglés).
+- Tus datos en japonés, listos para enseñar: dirección del hotel con "lléveme a esta dirección", alergias, enfermedades, medicamentos y grupo sanguíneo.
+- Se rellena desde **Mis datos**. Todo se guarda solo en el celular.
 
 ### Kana
 Tablas de hiragana y katakana (básicos, con tenten/maru y combinados). Toca un carácter para escucharlo. Hay una opción para ocultar el romaji y practicar, y una sección de trucos de lectura con palabras útiles para el viaje.
@@ -80,6 +90,12 @@ js/speech.js           síntesis de voz (Web Speech API)
 js/storage.js          leer/guardar JSON en localStorage de forma segura
 js/favorites.js        favoritas
 js/srs.js              repaso espaciado (sistema Leitner)
+js/profile.js          "Mis datos" (hotel, alergias, salud)
+js/slots.js            frases con hueco: valor elegido y relleno del texto
+js/search.js           buscador de frases
+js/wakelock.js         mantener la pantalla encendida
+js/data/slots.js       opciones de los huecos (estaciones, lugares, alérgenos)
+js/data/medical.js     enfermedades y grupos sanguíneos en japonés
 js/decks.js            mazos del quiz generados a partir de los datos
 js/utils.js            utilidades (barajar)
 js/numbers.js          conversión de números y precios a japonés

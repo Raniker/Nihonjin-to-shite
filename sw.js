@@ -6,7 +6,7 @@
 // Así el navegador detecta un sw.js distinto, descarga todo de nuevo
 // y borra la caché vieja.
 
-const VERSION = 'v1';
+const VERSION = 'v2';
 const CACHE = `nihongo-${VERSION}`;
 
 // Todos los archivos que necesita la app para funcionar offline.
@@ -29,8 +29,14 @@ const FILES = [
   './js/decks.js',
   './js/utils.js',
   './js/numbers.js',
+  './js/profile.js',
+  './js/slots.js',
+  './js/search.js',
+  './js/wakelock.js',
   './js/data/phrases.js',
   './js/data/kana.js',
+  './js/data/slots.js',
+  './js/data/medical.js',
   './js/views/components.js',
   './js/views/home.js',
   './js/views/phrases.js',
@@ -38,6 +44,8 @@ const FILES = [
   './js/views/kana.js',
   './js/views/numbers.js',
   './js/views/quiz.js',
+  './js/views/emergency.js',
+  './js/views/profile.js',
 ];
 
 // 1. INSTALL: se dispara cuando el navegador encuentra un sw.js nuevo.

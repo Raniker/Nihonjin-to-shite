@@ -447,6 +447,153 @@ main:has(#hide-romaji:checked) .k-romaji { visibility: hidden; }
 .summary-score { margin: 24px 0 0; font-size: 3rem; font-weight: 700; text-align: center; }
 .summary-actions { display: grid; gap: 8px; margin-top: 24px; text-align: center; }
 
+/* ---------- Buscador (inicio) ---------- */
+.search {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 12px 14px;
+  font: inherit;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+/* Mientras el buscador tiene texto (el placeholder no se ve), ocultamos el resto del inicio */
+main:has(.search:not(:placeholder-shown)) .home-sections { display: none; }
+
+.sos-link {
+  display: block;
+  padding: 14px 16px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--accent);
+  border-radius: var(--radius);
+}
+.sos-link small { display: block; font-weight: 400; opacity: .9; }
+
+/* ---------- Frases con hueco ---------- */
+.slot-badge { margin-top: 2px; font-size: .75rem; color: var(--accent); }
+
+.slot-picker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: -12px 0 24px;
+  color: var(--muted);
+}
+.slot-picker select, .form select {
+  flex: 1;
+  min-width: 0;
+  padding: 10px;
+  font: inherit;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+/* ---------- Conversación encadenada (dentro del panel rojo) ---------- */
+.a-next:empty { display: none; }
+.a-next { display: grid; gap: 6px; margin-top: 12px; }
+.a-next-title { font-size: .8rem; opacity: .85; }
+.followup {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 12px;
+  color: var(--text);
+  background: var(--surface);
+  border-radius: 10px;
+}
+.followup span { font-size: 1.1rem; font-weight: 600; }
+.followup small { color: var(--muted); }
+
+/* ---------- Ficha de emergencia ---------- */
+.call-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.call {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px 8px;
+  color: #fff;
+  background: var(--accent);
+  border-radius: var(--radius);
+}
+.call b { font-size: 2.2rem; line-height: 1.1; }
+.call span { font-weight: 600; }
+.call small { opacity: .9; }
+
+.call-wide {
+  display: block;
+  margin-top: 10px;
+  padding: 12px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.call-wide small { display: block; color: var(--muted); }
+
+.id-card {
+  display: grid;
+  gap: 18px;
+  margin: 20px 0 16px;
+  padding: 16px;
+  background: var(--surface);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+}
+.id-card small { display: block; font-size: .85rem; font-weight: 400; color: var(--muted); }
+.id-intro span { font-size: 1.3rem; font-weight: 700; }
+.id-intro, .id-request { margin: 0; }
+.id-section h2 { margin: 0 0 6px; font-size: 1.1rem; }
+.id-section h2 small { display: inline; }
+.id-big { margin: 0; font-size: 1.25rem; font-weight: 600; }
+.id-address { margin: 4px 0; font-size: 1.5rem; font-weight: 700; line-height: 1.35; }
+.id-phone { display: inline-block; margin: 4px 0 8px; font-size: 1.1rem; color: var(--accent); }
+.id-request span { font-size: 1.15rem; font-weight: 600; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  padding: 6px 10px;
+  font-size: 1.15rem;
+  background: var(--accent-soft);
+  border-radius: 999px;
+}
+.chip small { display: inline !important; }
+
+/* ---------- Formulario "Mis datos" ---------- */
+.form { display: grid; gap: 16px; }
+.form fieldset {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 12px 14px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.form legend { padding: 0 6px; font-weight: 600; }
+.form label { display: grid; gap: 4px; font-size: .9rem; color: var(--muted); }
+.form input:not([type="checkbox"]), .form textarea {
+  width: 100%;
+  padding: 10px;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.form label.check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  color: var(--text);
+}
+.form label.check input { width: 20px; height: 20px; accent-color: var(--accent); }
+.form label.check span { color: var(--muted); }
+.saved { color: var(--ok); text-align: center; margin: 12px 0 32px; }
+
 .notice {
   padding: 12px;
   margin-bottom: 16px;
