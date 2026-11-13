@@ -31,10 +31,12 @@ Leyenda: ✅ hecho · 🚧 en curso · ⏳ pendiente · 💡 idea para más adel
 - [x] Rondas de hasta 10 tarjetas con un máximo de 5 nuevas; repaso anticipado si no hay pendientes
 - [x] Progreso guardado en `localStorage`, con estadísticas por mazo
 
-## ⏳ Fase 4 — PWA instalable y offline
-- [ ] `manifest.json` + iconos
-- [ ] Service worker con caché de todos los archivos
-- [ ] Probar la instalación en Android
+## 🚧 Fase 4 — PWA instalable y offline
+- [x] `manifest.json` + iconos (normal y maskable), generados con `tools/make-icons.py`
+- [x] Service worker "cache first" con todos los archivos y versión para actualizar
+- [x] Aviso de "Hay una versión nueva" y botón propio de instalar
+- [x] `tools/check-sw.mjs` comprueba que la lista de archivos del service worker está completa
+- [ ] Probar la instalación y el modo offline en Android
 
 ## ⏳ Fase 5 — Publicación
 - [ ] Desplegar en GitHub Pages (HTTPS, necesario para el service worker)

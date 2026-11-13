@@ -36,6 +36,11 @@ Cada ronda junta las tarjetas pendientes con hasta 5 nuevas. El progreso se guar
 ### Favoritas ⭐
 Marca las frases que más usas y aparecerán al principio de la pantalla de inicio. Se guardan en el celular (`localStorage`).
 
+### Instalable y offline 📲
+Es una PWA: se puede instalar en la pantalla de inicio y funciona **sin conexión**, porque un service worker guarda todos los archivos en el celular.
+
+Para que el audio también funcione sin conexión, los datos de voz japonesa tienen que estar descargados (ver arriba).
+
 ## Ejecutar en local
 
 Los módulos ES no funcionan abriendo `index.html` con doble clic. Hace falta un servidor:
@@ -47,12 +52,26 @@ python -m http.server 8000
 - **En el PC:** http://localhost:8000
 - **En el celular (mismo Wi-Fi):** `http://<IP-del-PC>:8000`. En Windows, el firewall tiene que permitir conexiones entrantes al puerto 8000 para el perfil de red que estés usando.
 
+### Desarrollar con el service worker activo
+
+El service worker sirve los archivos desde la caché, así que **tus cambios no aparecen al recargar** hasta que cambia la versión.
+- **Al modificar cualquier archivo**, sube `VERSION` en [sw.js](sw.js). Con eso, la app muestra "Hay una versión nueva".
+- **Al añadir un archivo**, agrégalo a `FILES` en `sw.js` y comprueba la lista con `node tools/check-sw.mjs`.
+- **En Chrome de escritorio**, puedes activar DevTools → Application → Service workers → *Update on reload* para no depender de la versión mientras desarrollas.
+
+El service worker solo funciona con **HTTPS o `localhost`**. Para probarlo en el celular contra `http://<IP-del-PC>:8000`, abre `chrome://flags/#unsafely-treat-insecure-origin-as-secure` en el Chrome del celular, añade esa URL, activa la opción y reinicia Chrome. Otra vía es GitHub Pages, que ya sirve por HTTPS.
+
 ## Tecnología
 
 HTML, CSS y JavaScript puro con módulos ES. No usa frameworks ni paso de build: GitHub Pages sirve los archivos tal cual.
 
 ```
 index.html             página única (SPA)
+manifest.json          datos de la app instalada (nombre, iconos, colores)
+sw.js                  service worker: caché offline
+icons/                 iconos de la PWA
+tools/                 scripts de desarrollo (iconos, comprobar sw.js)
+js/pwa.js              registro del service worker, actualizaciones, botón instalar
 css/styles.css         estilos, tema claro/oscuro automático
 js/app.js              router por hash (#/...) y eventos globales
 js/speech.js           síntesis de voz (Web Speech API)
