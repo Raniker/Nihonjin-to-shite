@@ -1,0 +1,18 @@
+# --- Credenciales y secretos: NUNCA al repositorio ---
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+*.keystore
+id_rsa*
+id_ed25519*
+credentials*.json
+secret*.json
+
+# --- Sistema y herramientas ---
+.DS_Store
+Thumbs.db
+node_modules/
+__pycache__/

@@ -73,6 +73,15 @@ El service worker sirve los archivos desde la caché, así que **tus cambios no 
 
 El service worker solo funciona con **HTTPS o `localhost`**. Para probarlo en el celular contra `http://<IP-del-PC>:8000`, abre `chrome://flags/#unsafely-treat-insecure-origin-as-secure` en el Chrome del celular, añade esa URL, activa la opción y reinicia Chrome. Otra vía es GitHub Pages, que ya sirve por HTTPS.
 
+## Seguridad y privacidad
+
+- **Sin secretos en el repositorio.** La app no usa claves ni APIs. El hook `.githooks/pre-commit` cancela cualquier commit que contenga tokens, claves o archivos como `.env`, y `.gitignore` los excluye. Para activar el hook en un clon nuevo: `git config core.hooksPath .githooks`.
+- **Content Security Policy:** el navegador solo ejecuta código servido desde el propio dominio de la app.
+- **Tus datos no salen del celular.** "Mis datos" y el progreso viven en `localStorage`. No hay analíticas ni peticiones a terceros.
+- **Recomendado en GitHub:** Settings → *Code security* → activar *Secret scanning* y *Push protection*. Son gratuitos en repositorios públicos.
+
+Las reglas para agentes de IA que trabajen en el código están en [AGENTS.md](AGENTS.md).
+
 ## Tecnología
 
 HTML, CSS y JavaScript puro con módulos ES. No usa frameworks ni paso de build: GitHub Pages sirve los archivos tal cual.

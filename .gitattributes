@@ -1,0 +1,6 @@
+# Git normaliza los finales de línea de los archivos de texto
+* text=auto
+
+# Los hooks son scripts de shell: con finales de línea de Windows (CRLF)
+# la primera línea "#!/bin/sh" deja de funcionar. Siempre LF.
+.githooks/* text eol=lf

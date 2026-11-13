@@ -1,0 +1,7 @@
+#!/bin/sh
+# Hook de git: se ejecuta antes de cada commit. Si termina con error, el commit se cancela.
+# Activación (una vez por cada clon del repositorio):
+#   git config core.hooksPath .githooks
+
+node tools/check-secrets.mjs --staged || exit 1
+node tools/check-sw.mjs || exit 1
