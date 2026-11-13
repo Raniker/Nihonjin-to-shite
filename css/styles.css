@@ -628,6 +628,7 @@ main:has(.search:not(:placeholder-shown)) .home-sections { display: none; }
 .write-actions { display: grid; grid-template-columns: 1fr 1fr 1.3fr; gap: 8px; margin-bottom: 10px; }
 .write-actions .btn { padding: 10px 6px; }
 .btn.on { background: var(--accent-soft); border-color: var(--accent); }
+.btn:disabled { opacity: .45; cursor: default; }
 
 /* Dos canvas apilados: la guía debajo y el dibujo encima.
    Ancho = el menor entre el ancho disponible, 360px y el 55 % del alto de la

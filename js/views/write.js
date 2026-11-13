@@ -20,7 +20,7 @@ const writable = () => kanaGroups.slice(0, 2).flatMap(g => g.cells).filter(Boole
 let state = null; // { script, kana, strokes, guide, result, lastScore }
 
 // Si la nota es baja, enseñamos el modelo unos segundos y borramos para reintentar
-const PASS = 0.6;          // a partir de aquí "¡Muy bien!"
+const PASS = 0.65;         // nota mínima para "¡Muy bien!" y para poder pasar al siguiente
 const REVIEW_MS = 2500;    // cuánto tiempo se ve el modelo antes de borrar
 let retryTimer = null;
 
@@ -164,8 +164,12 @@ function redrawGuide() {
 function showResult() {
   const badge = document.getElementById('write-result');
   const checked = state.result !== null;
-  document.querySelector('[data-write-check]').hidden = checked;
-  document.querySelector('[data-write-next]').hidden = !checked;
+  const passed = checked && state.result >= PASS;
+  const checkBtn = document.querySelector('[data-write-check]');
+  // "Siguiente" solo aparece al aprobar: hay que practicar hasta llegar al mínimo
+  checkBtn.hidden = passed;
+  checkBtn.disabled = checked && !passed; // mientras se ve el modelo, no se puede volver a comprobar
+  document.querySelector('[data-write-next]').hidden = !passed;
 
   if (!checked) {
     // Tras un repaso automático recordamos la nota del intento anterior
@@ -228,6 +232,9 @@ export function checkWriting() {
 }
 
 export function nextWriting() {
+  // Protección también en la lógica, no solo ocultando el botón:
+  // sin nota suficiente no se avanza, se llame como se llame a esta función.
+  if (state.result === null || state.result < PASS) return;
   cancelReview();
   hideGuide(); // la guía del kana anterior no debe verse en el nuevo
   state.kana = pickKana(state.kana);
