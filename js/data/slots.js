@@ -19,9 +19,9 @@ export const stations = [
   { id: 'hiroshima', jp: '広島', romaji: 'Hiroshima', es: 'Hiroshima' },
   { id: 'kanazawa', jp: '金沢', romaji: 'Kanazawa', es: 'Kanazawa' },
   { id: 'nikko', jp: '日光', romaji: 'Nikkō', es: 'Nikkō' },
-  { id: 'narita', jp: '成田空港', romaji: 'Narita kūkō', es: 'el aeropuerto de Narita' },
-  { id: 'haneda', jp: '羽田空港', romaji: 'Haneda kūkō', es: 'el aeropuerto de Haneda' },
-  { id: 'kansai', jp: '関西空港', romaji: 'Kansai kūkō', es: 'el aeropuerto de Kansai' },
+  { id: 'narita', jp: '成田空港', romaji: 'Narita kūkō', es: 'Narita (aeropuerto)' },
+  { id: 'haneda', jp: '羽田空港', romaji: 'Haneda kūkō', es: 'Haneda (aeropuerto)' },
+  { id: 'kansai', jp: '関西空港', romaji: 'Kansai kūkō', es: 'Kansai (aeropuerto)' },
 ];
 
 export const places = [

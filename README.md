@@ -9,7 +9,7 @@ PWA para aprender japonés básico de cara a un viaje de turismo y para usarla *
 ## Funciones
 
 ### Frases por categoría
-Restaurante 🍜, Tren 🚄, Hotel 🏨, Tiendas 🛍️, Direcciones 🧭, Emergencias 🚨 y Responder 🙋: 76 frases, cada una con japonés, romaji y traducción al español.
+Restaurante 🍜, Tren 🚄, Taxi 🚕, Hotel 🏨, Tiendas 🛍️, Farmacia 💊, Direcciones 🧭, Onsen ♨️, Templos ⛩️, Emergencias 🚨 y Responder 🙋: 103 frases, cada una con japonés, romaji y traducción al español.
 
 Algunas frases tienen un **hueco que puedes cambiar**: "Un billete a ＿＿" (17 estaciones), "¿Dónde está ＿＿?" (farmacia, cajero, consigna…) y "Tengo alergia a ＿＿".
 
@@ -32,6 +32,9 @@ Toca una frase para verla en grande y enseñársela a quien te atiende. Debajo a
 - Tus datos en japonés, listos para enseñar: dirección del hotel con "lléveme a esta dirección", alergias, enfermedades, medicamentos y grupo sanguíneo.
 - Se rellena desde **Mis datos**. Todo se guarda solo en el celular.
 
+### Copia de seguridad 💾
+En **Mis datos** puedes **exportar** a un archivo `.json` tus datos, favoritas y progreso del quiz, e **importarlo** en otro celular. El archivo incluye datos de salud, así que guárdalo en un lugar privado.
+
 ### Kana
 Tablas de hiragana y katakana (básicos, con tenten/maru y combinados). Toca un carácter para escucharlo. Hay una opción para ocultar el romaji y practicar, y una sección de trucos de lectura con palabras útiles para el viaje.
 
@@ -39,7 +42,7 @@ Tablas de hiragana y katakana (básicos, con tenten/maru y combinados). Toca un 
 Números de referencia con kanji, kana y romaji; los irregulares van destacados. Incluye un **conversor de precios**: escribes `3500` y muestra 3,500円 → 三千五百円 → さんぜんごひゃくえん → *sanzen gohyaku en*, con audio. El botón 🎲 genera precios al azar para practicar.
 
 ### Quiz con repaso espaciado 🧠
-Cuatro mazos: frases (en los dos sentidos), hiragana, katakana, y números y precios, con preguntas de "¿qué precio oyes?". Funciona con el **sistema Leitner**:
+Cinco mazos: frases (en los dos sentidos), **entender respuestas** (lo que te dicen los japoneses), hiragana, katakana, y números y precios, con preguntas de "¿qué precio oyes?". Funciona con el **sistema Leitner**:
 - Si aciertas, la tarjeta vuelve en 1, 2, 4, 8 y luego 16 días.
 - Si fallas, se repite en la misma ronda.
 
@@ -103,6 +106,7 @@ js/profile.js          "Mis datos" (hotel, alergias, salud)
 js/slots.js            frases con hueco: valor elegido y relleno del texto
 js/search.js           buscador de frases
 js/wakelock.js         mantener la pantalla encendida
+js/backup.js           exportar/importar copia de seguridad
 js/data/slots.js       opciones de los huecos (estaciones, lugares, alérgenos)
 js/data/medical.js     enfermedades y grupos sanguíneos en japonés
 js/decks.js            mazos del quiz generados a partir de los datos

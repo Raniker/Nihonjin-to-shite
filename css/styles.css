@@ -594,6 +594,10 @@ main:has(.search:not(:placeholder-shown)) .home-sections { display: none; }
 .form label.check span { color: var(--muted); }
 .saved { color: var(--ok); text-align: center; margin: 12px 0 32px; }
 
+.backup { margin-bottom: 40px; }
+.backup-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.backup-actions .btn { text-align: center; }
+
 .notice {
   padding: 12px;
   margin-bottom: 16px;

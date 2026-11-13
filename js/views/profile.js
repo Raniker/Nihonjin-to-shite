@@ -62,6 +62,22 @@ export function profileView() {
       </fieldset>
     </form>
     <p id="saved" class="saved" hidden>✓ Guardado</p>
+
+    <section class="backup">
+      <h2 class="section-title">💾 Copia de seguridad</h2>
+      <p class="hint">Guarda en un archivo tus datos, favoritas y progreso del quiz.
+        Útil si cambias de celular o se borran los datos de Chrome.
+        <strong>El archivo incluye tus datos de salud: guárdalo en un lugar privado.</strong></p>
+      <div class="backup-actions">
+        <button class="btn" data-export>⬇️ Exportar</button>
+        <!-- El input de archivo es feo y difícil de estilar: lo ocultamos
+             y usamos su <label> como botón (tocar el label abre el selector) -->
+        <label class="btn">⬆️ Importar
+          <input type="file" accept="application/json,.json" data-import hidden>
+        </label>
+      </div>
+      <p id="backup-msg" class="hint" hidden></p>
+    </section>
   `;
 }
 

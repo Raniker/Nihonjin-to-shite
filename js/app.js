@@ -12,6 +12,7 @@ import { speak } from './speech.js';
 import { toggleFavorite, isFavorite } from './favorites.js';
 import { setSlot } from './slots.js';
 import { keepScreenOn } from './wakelock.js';
+import { exportBackup, readBackup, applyBackup } from './backup.js';
 
 // Tabla de rutas: primer segmento del hash → función que genera la vista.
 //   #/                     → homeView()
@@ -98,6 +99,8 @@ document.addEventListener('click', (e) => {
     return;
   }
 
+  if (e.target.closest('[data-export]')) return exportBackup();
+
   if (e.target.closest('[data-random-price]')) {
     const input = document.querySelector('[data-price-input]');
     input.value = randomPrice();
@@ -133,13 +136,34 @@ document.addEventListener('input', (e) => {
   if (form) saveProfileForm(form);
 });
 
-// "change" se dispara al elegir una opción de un <select>
+// "change" se dispara al elegir una opción de un <select> o un archivo
 document.addEventListener('change', (e) => {
   if (e.target.matches('[data-slot]')) {
     setSlot(e.target.dataset.slot, e.target.value);
     render(); // la frase cambia: re-pintamos la vista
+    return;
   }
+  if (e.target.matches('[data-import]')) importBackup(e.target);
 });
+
+async function importBackup(input) {
+  const file = input.files[0];
+  input.value = ''; // permite volver a elegir el mismo archivo
+  if (!file) return;
+  const msg = document.getElementById('backup-msg');
+  try {
+    const { data, exportedAt } = await readBackup(file);
+    const date = exportedAt ? new Date(exportedAt).toLocaleDateString('es-ES') : '?';
+    if (!confirm(`¿Reemplazar tus datos actuales por la copia del ${date}?`)) return;
+    applyBackup(data);
+    // Los módulos leyeron localStorage al arrancar y guardan los datos en memoria:
+    // la forma más simple y segura de usar los nuevos es recargar la app.
+    location.reload();
+  } catch (err) {
+    msg.textContent = `❌ ${err.message}`;
+    msg.hidden = false;
+  }
+}
 
 // Pulsar "Enter" en un campo envía el formulario y recargaría la página: lo evitamos
 document.addEventListener('submit', (e) => e.preventDefault());

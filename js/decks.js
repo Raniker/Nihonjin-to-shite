@@ -15,7 +15,7 @@
 //   group        las opciones incorrectas salen de tarjetas del mismo grupo
 //   explain      texto extra al mostrar la solución
 
-import { categories } from './data/phrases.js';
+import { categories, commonReplies } from './data/phrases.js';
 import { kanaGroups } from './data/kana.js';
 import { readNumber, readPrice } from './numbers.js';
 import { fillPhrase } from './slots.js';
@@ -36,6 +36,23 @@ function phraseCards() {
       answer: p.jp, answerLang: 'ja', answerSub: p.romaji, group: 'fr-ja',
     },
   ]));
+}
+
+// Comprensión: entender lo que TE DICEN. Reutiliza todas las respuestas de las frases.
+// Muchas se repiten (las de direcciones, "かしこまりました"...): un Map por texto
+// japonés se queda con una sola de cada.
+function replyCards() {
+  const unique = new Map();
+  const all = [...commonReplies, ...categories.flatMap(c => c.phrases.flatMap(p => p.replies ?? []))];
+  for (const reply of all) {
+    if (!unique.has(reply.jp)) unique.set(reply.jp, reply);
+  }
+  return [...unique.values()].map(reply => ({
+    // El id es el propio texto: si algún día cambias la frase, cuenta como tarjeta nueva
+    id: `resp:${reply.jp}`, ask: '¿Qué te están diciendo?',
+    question: reply.jp, questionLang: 'ja', audio: reply.jp, autoplay: true,
+    answer: reply.es, answerLang: 'es', group: 'reply-es',
+  }));
 }
 
 function kanaCards(script) {
@@ -88,6 +105,7 @@ function numberCards() {
 
 export const decks = [
   { id: 'frases', name: 'Frases', icon: '💬', cards: phraseCards },
+  { id: 'respuestas', name: 'Entender respuestas', icon: '👂', cards: replyCards },
   { id: 'hiragana', name: 'Hiragana', icon: 'あ', cards: () => kanaCards('hiragana') },
   { id: 'katakana', name: 'Katakana', icon: 'ア', cards: () => kanaCards('katakana') },
   { id: 'numeros', name: 'Números y precios', icon: '¥', cards: numberCards },

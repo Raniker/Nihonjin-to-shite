@@ -55,7 +55,13 @@ Leyenda: ✅ hecho · 🚧 en curso · ⏳ pendiente · 💡 idea para más adel
 - [x] 142 respuestas enlazan con "Puedes contestar:" → tocar una abre esa frase con sus propias respuestas, y así sigue la conversación
 - [x] El botón Atrás recorre la conversación hacia atrás
 
+## ✅ Fase 8 — Más contenido, comprensión y copia de seguridad
+- [x] 4 categorías nuevas: Taxi 🚕, Farmacia 💊, Onsen ♨️ y Templos ⛩️ (27 frases con respuestas encadenadas)
+- [x] Mazo "Entender respuestas" 👂: 163 respuestas japonesas generadas a partir de las frases
+- [x] Copia de seguridad en Mis datos: exportar a `.json` e importar con validación del archivo
+- [x] Corrección: los aeropuertos encajan en las frases ("A Narita (aeropuerto)")
+
 ## 💡 Ideas para el futuro
-- [ ] Más frases y categorías (onsen, templos, farmacia, taxi)
-- [ ] Practicar en el quiz la comprensión de las respuestas del japonés
-- [ ] Exportar e importar el progreso y "Mis datos" (copia de seguridad)
+- [ ] Más frases con hueco (horas, cantidades: "dos entradas", "a las 7")
+- [ ] Practicar la escritura de kana (dibujar con el dedo)
+- [ ] Modo "conversación guiada": recorrer una escena completa (llegar al hotel, pedir en un restaurante)

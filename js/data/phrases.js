@@ -35,6 +35,14 @@ const directionReplies = [
   r('一緒に行きましょう', 'Le acompaño', ['con-07']),
 ];
 
+// "¿Tiene X?" en la farmacia
+const pharmacyReplies = [
+  r('こちらです', 'Aquí lo tiene', ['con-09', 'far-07']),
+  r('症状を教えてください', 'Dígame qué síntomas tiene', ['far-02', 'far-03', 'con-23', 'con-24']),
+  r('ありません', 'No tenemos', ['con-07']),
+  r('処方箋が必要です', 'Necesita receta médica', ['eme-04']),
+];
+
 const emergencyCareReplies = [
   r('救急車を呼びます', 'Voy a llamar a una ambulancia', ['con-07']),
   r('どこが痛いですか？', '¿Dónde le duele?', ['con-23', 'con-24', 'con-30']),
@@ -141,6 +149,38 @@ export const categories = [
     ],
   },
   {
+    id: 'taxi',
+    name: 'Taxi',
+    icon: '🚕',
+    phrases: [
+      { id: 'tax-01', jp: 'この住所までお願いします', romaji: 'kono jūsho made onegai shimasu', es: 'A esta dirección, por favor (enseñándola)', replies: [
+        r('わかりました', 'Entendido', ['con-07']),
+        r('少し遠いです', 'Está un poco lejos', ['tax-04']),
+        r('住所がわかりません', 'No encuentro esa dirección', ['con-08']),
+      ] },
+      { id: 'tax-02', slot: 'station', jp: '{station}までお願いします', romaji: '{station} made onegai shimasu', es: 'A {station}, por favor', replies: [
+        r('わかりました', 'Entendido', ['con-07']),
+        r('高速道路を使いますか？', '¿Vamos por autopista? (cuesta más)', ['con-01', 'con-02']),
+      ] },
+      { id: 'tax-03', jp: 'ここで止めてください', romaji: 'koko de tomete kudasai', es: 'Pare aquí, por favor', replies: [
+        r('ここでいいですか？', '¿Aquí está bien?', ['con-01']),
+        r('ここは止められません', 'Aquí no puedo parar', ['con-05']),
+      ] },
+      { id: 'tax-04', jp: 'いくらぐらいかかりますか？', romaji: 'ikura gurai kakarimasu ka?', es: '¿Cuánto costará más o menos?', replies: [
+        r('2000円くらいです', 'Unos 2.000 yenes', ['con-01']),
+        r('5000円くらいです', 'Unos 5.000 yenes', ['con-01', 'con-02']),
+        r('メーター料金です', 'Lo que marque el taxímetro', ['con-05']),
+      ] },
+      { id: 'tax-05', jp: '急いでいます', romaji: 'isoide imasu', es: 'Tengo prisa', replies: [
+        r('わかりました', 'Entendido', ['con-07']),
+        r('渋滞しています', 'Hay atasco', ['con-05']),
+      ] },
+      { id: 'tax-06', jp: 'トランクを開けてもらえますか？', romaji: 'toranku o akete moraemasu ka?', es: '¿Puede abrir el maletero?', replies: [
+        r('はい、どうぞ', 'Sí, adelante', ['con-07']),
+      ] },
+    ],
+  },
+  {
     id: 'hotel',
     name: 'Hotel',
     icon: '🏨',
@@ -215,6 +255,36 @@ export const categories = [
     ],
   },
   {
+    id: 'farmacia',
+    name: 'Farmacia',
+    icon: '💊',
+    phrases: [
+      { id: 'far-01', jp: '風邪薬はありますか？', romaji: 'kazegusuri wa arimasu ka?', es: '¿Tiene medicina para el resfriado?', replies: pharmacyReplies },
+      { id: 'far-04', jp: '痛み止めはありますか？', romaji: 'itamidome wa arimasu ka?', es: '¿Tiene analgésicos?', replies: pharmacyReplies },
+      { id: 'far-05', jp: '胃薬はありますか？', romaji: 'igusuri wa arimasu ka?', es: '¿Tiene algo para el estómago?', replies: pharmacyReplies },
+      { id: 'far-06', jp: '絆創膏はありますか？', romaji: 'bansōkō wa arimasu ka?', es: '¿Tiene tiritas (curitas)?', replies: pharmacyReplies },
+      { id: 'far-02', jp: '熱があります', romaji: 'netsu ga arimasu', es: 'Tengo fiebre', replies: [
+        r('いつからですか？', '¿Desde cuándo?', ['con-08']),
+        r('この薬がいいです', 'Le va bien esta medicina', ['con-09', 'far-07']),
+        r('病院に行ってください', 'Vaya al hospital', ['eme-04']),
+      ] },
+      { id: 'far-03', jp: '喉が痛いです', romaji: 'nodo ga itai desu', es: 'Me duele la garganta', replies: [
+        r('この薬がいいです', 'Le va bien esta medicina', ['con-09', 'far-07']),
+        r('熱はありますか？', '¿Tiene fiebre?', ['far-02', 'con-02']),
+      ] },
+      { id: 'far-07', jp: '一日何回飲みますか？', romaji: 'ichinichi nankai nomimasu ka?', es: '¿Cuántas veces al día lo tomo?', replies: [
+        r('1日3回です', '3 veces al día', ['con-05']),
+        r('1日2回です', '2 veces al día', ['con-05']),
+        r('食後に飲んでください', 'Tómelo después de comer', ['con-05']),
+        r('1回2錠です', '2 pastillas cada vez', ['con-05']),
+      ] },
+      { id: 'far-08', jp: '眠くなりますか？', romaji: 'nemuku narimasu ka?', es: '¿Da sueño?', replies: [
+        r('眠くなります', 'Sí, da sueño', ['con-05']),
+        r('眠くなりません', 'No da sueño', ['con-09']),
+      ] },
+    ],
+  },
+  {
     id: 'direcciones',
     name: 'Direcciones',
     icon: '🧭',
@@ -237,6 +307,79 @@ export const categories = [
       { id: 'dir-05', jp: '右', romaji: 'migi', es: 'Derecha' },
       { id: 'dir-06', jp: '左', romaji: 'hidari', es: 'Izquierda' },
       { id: 'dir-07', jp: 'まっすぐ', romaji: 'massugu', es: 'Todo recto' },
+    ],
+  },
+  {
+    id: 'onsen',
+    name: 'Onsen',
+    icon: '♨️',
+    phrases: [
+      { id: 'ons-01', jp: 'タオルはありますか？', romaji: 'taoru wa arimasu ka?', es: '¿Hay toallas?', replies: [
+        r('無料です', 'Son gratis', ['con-07']),
+        r('有料です', 'Son de pago', ['con-01', 'con-02']),
+        r('レンタルは200円です', 'El alquiler cuesta 200 yenes', ['con-01', 'con-02']),
+      ] },
+      { id: 'ons-02', jp: 'タトゥーがありますが、入れますか？', romaji: 'tatū ga arimasu ga, hairemasu ka?', es: 'Tengo tatuajes, ¿puedo entrar?', replies: [
+        r('大丈夫です', 'No hay problema', ['con-07']),
+        r('シールで隠せば大丈夫です', 'Si lo tapa con un parche, puede entrar', ['con-01']),
+        r('申し訳ありませんが、入れません', 'Lo sentimos, no puede entrar', ['ons-03', 'con-05']),
+      ] },
+      { id: 'ons-03', jp: '貸切風呂はありますか？', romaji: 'kashikiri buro wa arimasu ka?', es: '¿Hay baño privado?', replies: [
+        r('あります。予約が必要です', 'Sí. Hace falta reservar', ['con-01']),
+        r('ありません', 'No hay', ['con-05']),
+      ] },
+      { id: 'ons-04', jp: '男湯はどちらですか？', romaji: 'otokoyu wa dochira desu ka?', es: '¿Dónde está el baño de hombres? (男)', replies: [
+        r('青いのれんです', 'La cortina azul', ['con-07']),
+        r('右です', 'A la derecha', ['con-07']),
+        r('左です', 'A la izquierda', ['con-07']),
+      ] },
+      { id: 'ons-05', jp: '女湯はどちらですか？', romaji: 'onnayu wa dochira desu ka?', es: '¿Dónde está el baño de mujeres? (女)', replies: [
+        r('赤いのれんです', 'La cortina roja', ['con-07']),
+        r('右です', 'A la derecha', ['con-07']),
+        r('左です', 'A la izquierda', ['con-07']),
+      ] },
+      { id: 'ons-06', jp: '何時まで入れますか？', romaji: 'nanji made hairemasu ka?', es: '¿Hasta qué hora se puede entrar?', replies: [
+        r('23時までです', 'Hasta las 23:00', ['con-07']),
+        r('24時間入れます', 'Está abierto las 24 horas', ['con-07']),
+      ] },
+    ],
+  },
+  {
+    id: 'templos',
+    name: 'Templos',
+    icon: '⛩️',
+    phrases: [
+      { id: 'tem-01', jp: '拝観料はいくらですか？', romaji: 'haikanryō wa ikura desu ka?', es: '¿Cuánto cuesta la entrada?', replies: [
+        r('500円です', '500 yenes', ['con-07']),
+        r('無料です', 'Es gratis', ['con-07']),
+        r('あちらでお支払いください', 'Pague allí, por favor', ['con-05']),
+      ] },
+      { id: 'tem-02', jp: '写真を撮ってもいいですか？', romaji: 'shashin o totte mo ii desu ka?', es: '¿Puedo hacer fotos?', replies: [
+        r('はい、どうぞ', 'Sí, adelante', ['con-07']),
+        r('ここは撮影禁止です', 'Aquí está prohibido hacer fotos', ['con-05']),
+        r('フラッシュは使わないでください', 'No use el flash', ['con-05']),
+      ] },
+      { id: 'tem-03', jp: '御朱印をお願いします', romaji: 'goshuin o onegai shimasu', es: 'Un goshuin (sello del templo), por favor', replies: [
+        r('御朱印帳はお持ちですか？', '¿Tiene libro de sellos?', ['con-01', 'tem-04']),
+        r('500円です', '500 yenes', ['con-07']),
+        r('書き置きのみです', 'Solo en hoja suelta', ['con-01']),
+        r('少々お待ちください', 'Espere un momento', ['con-20']),
+      ] },
+      { id: 'tem-04', jp: '御朱印帳をください', romaji: 'goshuinchō o kudasai', es: 'Un libro de sellos, por favor', replies: [
+        r('こちらからお選びください', 'Elija uno de estos', ['con-09']),
+        r('売り切れです', 'Está agotado', ['con-05']),
+      ] },
+      { id: 'tem-05', jp: '靴を脱ぎますか？', romaji: 'kutsu o nugimasu ka?', es: '¿Hay que quitarse los zapatos?', replies: [
+        r('はい、脱いでください', 'Sí, quíteselos por favor', ['con-05']),
+        r('そのままで大丈夫です', 'Puede dejárselos puestos', ['con-07']),
+      ] },
+      { id: 'tem-06', jp: '何時に閉まりますか？', romaji: 'nanji ni shimarimasu ka?', es: '¿A qué hora cierra?', replies: [
+        r('16時半です', 'A las 16:30', ['con-07']),
+        r('17時です', 'A las 17:00', ['con-07']),
+      ] },
+      { id: 'tem-07', jp: 'お守りはどこで買えますか？', romaji: 'omamori wa doko de kaemasu ka?', es: '¿Dónde se compran los amuletos (omamori)?', replies: [
+        r('あちらの授与所です', 'En el puesto de allí', ['con-07']),
+      ] },
     ],
   },
   {
