@@ -1,0 +1,230 @@
+/* ---------- Variables de color (tema claro por defecto) ---------- */
+:root {
+  --bg: #faf7f2;
+  --surface: #ffffff;
+  --text: #1f1f1f;
+  --muted: #6b6b6b;
+  --accent: #c0392b;      /* rojo hinomaru */
+  --accent-soft: #fbe9e7;
+  --border: #e6e0d8;
+  --radius: 14px;
+  /* Android ya trae Noto Sans CJK: no hace falta descargar fuentes */
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
+}
+
+/* Tema oscuro automático según el sistema */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141414;
+    --surface: #1f1f1f;
+    --text: #f2f2f2;
+    --muted: #a0a0a0;
+    --accent: #ff6b5a;
+    --accent-soft: #3a1f1c;
+    --border: #2e2e2e;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  line-height: 1.5;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ---------- Barra superior ---------- */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 12px 16px;
+  background: var(--accent);
+  color: #fff;
+}
+.brand { font-weight: 700; font-size: 1.15rem; }
+.brand span { font-weight: 400; opacity: .85; font-size: .95rem; }
+
+main {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+h1 { font-size: 1.4rem; margin: 8px 0 16px; }
+
+.back { display: inline-block; color: var(--muted); margin-bottom: 4px; }
+
+/* ---------- Rejilla de tarjetas (menú) ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.card .icon { font-size: 1.8rem; }
+.card .title { font-weight: 600; }
+.card .sub { color: var(--muted); font-size: .85rem; }
+.card.disabled { opacity: .45; pointer-events: none; }
+
+.section-title {
+  margin: 24px 0 8px;
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--muted);
+}
+
+/* ---------- Lista de frases ---------- */
+.phrase-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+
+.phrase {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.phrase .text { flex: 1; min-width: 0; }
+.phrase .jp { font-size: 1.3rem; font-weight: 600; }
+.phrase .romaji { color: var(--accent); font-style: italic; }
+.phrase .es { color: var(--muted); font-size: .95rem; }
+
+/* Botón de audio: mínimo 48px para que sea fácil de pulsar con el dedo */
+.speak-btn {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+.speak-btn:active { transform: scale(.92); }
+
+.phrase .actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Estrella de favorita: gris apagado, dorada cuando está activa */
+.fav-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: none;
+  font-size: 1.4rem;
+  color: var(--muted);
+  opacity: .35;
+  cursor: pointer;
+}
+.fav-btn.on { color: #f5b301; opacity: 1; }
+
+.hint { color: var(--muted); font-size: .85rem; margin: -8px 0 12px; }
+
+/* ---------- Modo "mostrar" ---------- */
+/* app.js pone data-view="mostrar" en <body>: ocultamos la barra para ganar espacio */
+body[data-view="mostrar"] .topbar { display: none; }
+
+.show-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.show-tools { display: flex; gap: 8px; }
+
+.link-btn {
+  background: none;
+  border: none;
+  padding: 8px 0;
+  color: var(--muted);
+  font: inherit;
+  cursor: pointer;
+}
+.icon-btn {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+/* clamp(mín, ideal, máx): el tamaño crece con el ancho de pantalla pero con límites */
+.show-jp {
+  font-size: clamp(2rem, 10vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 20px 0 6px;
+}
+.show-me { color: var(--muted); margin: 0 0 24px; }
+
+/* sticky: el panel se queda pegado arriba al hacer scroll por las respuestas */
+.answer {
+  position: sticky;
+  top: 8px;
+  z-index: 5;
+  margin-bottom: 20px;
+  padding: 16px;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .25);
+}
+.answer .a-label { font-size: .8rem; opacity: .85; }
+.answer .a-es { font-size: 1.6rem; font-weight: 700; line-height: 1.25; }
+.answer .a-jp { opacity: .85; }
+
+.replies-title { font-size: 1.15rem; margin: 0 0 10px; }
+.replies-title span {
+  display: block;
+  font-size: .8rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.replies { display: grid; gap: 8px; padding-bottom: 32px; }
+.replies-sep { width: 100%; border: none; border-top: 1px dashed var(--border); margin: 6px 0; }
+
+.reply {
+  padding: 14px 16px;
+  text-align: left;
+  font: inherit;
+  font-size: 1.2rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.reply .r-es { display: none; } /* la traducción solo se ve en el panel */
+.reply.selected { border-color: var(--accent); background: var(--accent-soft); }
+
+.notice {
+  padding: 12px;
+  margin-bottom: 16px;
+  border-radius: var(--radius);
+  background: var(--accent-soft);
+  font-size: .9rem;
+}
