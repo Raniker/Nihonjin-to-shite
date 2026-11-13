@@ -604,23 +604,39 @@ main:has(.search:not(:placeholder-shown)) .home-sections { display: none; }
 /* ---------- Escribir kana ---------- */
 .write-link { display: block; margin-bottom: 12px; text-align: center; }
 
-.write-target {
+/* Barra encima del lienzo: qué escribir a la izquierda, la nota a la derecha */
+.write-bar {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 12px;
-  font-size: 1.1rem;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 56px;     /* altura fija: la nota no hace "saltar" el lienzo */
+  margin-bottom: 8px;
 }
-.write-romaji { font-size: 2rem; color: var(--accent); }
+.write-target { display: flex; align-items: center; gap: 8px; font-size: 1.05rem; }
+.write-romaji { font-size: 2rem; line-height: 1; color: var(--accent); }
+.speak-btn.small { width: 40px; height: 40px; font-size: 1.1rem; }
 
-/* Dos canvas apilados: la guía debajo y el dibujo encima */
+.write-badge { display: flex; flex-direction: column; align-items: flex-end; text-align: right; }
+.write-badge strong { font-size: 1.4rem; line-height: 1.1; }
+.write-badge small { color: var(--muted); }
+.write-badge.ok strong { color: var(--ok); }
+.write-badge.mid strong { color: #d18a00; }
+.write-badge.ko strong { color: var(--accent); }
+.write-badge.last strong { color: var(--muted); font-size: 1.1rem; }
+
+.write-actions { display: grid; grid-template-columns: 1fr 1fr 1.3fr; gap: 8px; margin-bottom: 10px; }
+.write-actions .btn { padding: 10px 6px; }
+.btn.on { background: var(--accent-soft); border-color: var(--accent); }
+
+/* Dos canvas apilados: la guía debajo y el dibujo encima.
+   Ancho = el menor entre el ancho disponible, 360px y el 55 % del alto de la
+   pantalla: así barra + botones + lienzo caben sin hacer scroll. */
 .pad {
   position: relative;
-  width: 100%;
-  max-width: 340px;
+  width: min(100%, 360px, 55vh);
   aspect-ratio: 1;      /* siempre cuadrado */
-  margin: 0 auto 10px;
+  margin: 0 auto 8px;
   background: var(--surface);
   border: 2px solid var(--border);
   border-radius: var(--radius);
@@ -629,8 +645,7 @@ main:has(.search:not(:placeholder-shown)) .home-sections { display: none; }
 /* Sin esto, al arrastrar el dedo el navegador haría scroll en vez de dibujar */
 .pad-draw { touch-action: none; cursor: crosshair; }
 
-.write-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
-.write-result .feedback { margin-bottom: 8px; }
+.write-hint { text-align: center; }
 
 /* ---------- Escenas (chat) ---------- */
 .chat { display: grid; gap: 10px; margin-bottom: 16px; }

@@ -113,6 +113,7 @@ document.addEventListener('click', (e) => {
   if (e.target.closest('[data-write-clear]')) return clearWriting();
   if (e.target.closest('[data-write-check]')) return checkWriting();
   if (e.target.closest('[data-write-next]')) return nextWriting();
+  if (e.target.closest('[data-guide-toggle]')) return toggleGuide();
 
   const revealBtn = e.target.closest('[data-scene-reveal]');
   if (revealBtn) return revealLine(Number(revealBtn.dataset.sceneReveal));
@@ -161,8 +162,7 @@ document.addEventListener('change', (e) => {
     render(); // la frase cambia: re-pintamos la vista
     return;
   }
-  if (e.target.matches('[data-import]')) return importBackup(e.target);
-  if (e.target.matches('[data-guide]')) toggleGuide(e.target.checked);
+  if (e.target.matches('[data-import]')) importBackup(e.target);
 });
 
 async function importBackup(input) {

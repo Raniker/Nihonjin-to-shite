@@ -65,6 +65,7 @@ Leyenda: ✅ hecho · 🚧 en curso · ⏳ pendiente · 💡 idea para más adel
 - [x] Frases con hueco de **personas, cosas, entradas y horas** ("Mesa para dos", "a las 7:30", "2 entradas")
 - [x] Sección **Contadores** en Números (人, つ, 枚, 時) con las lecturas irregulares destacadas
 - [x] **Escribir kana con el dedo**: canvas con Pointer Events, guía para calcar y corrección por distancia al modelo (calibrada en Chrome)
+- [x] Controles y nota encima del lienzo (sin scroll); con menos del 60 % se ve el modelo 2,5 s y se borra para reintentar
 - [x] **Escenas guiadas** 🎭: 5 conversaciones completas (restaurante, hotel, tren, farmacia, taxi) para destapar línea a línea
 - [x] Las vistas pueden definir `mount()` para preparar cosas tras pintarse
 
