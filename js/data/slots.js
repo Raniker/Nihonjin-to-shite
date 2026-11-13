@@ -87,6 +87,19 @@ export const things = [
   { id: '5', jp: '五つ', kana: 'いつつ', romaji: 'itsutsu', es: 'cinco', irregular: true },
 ];
 
+// Duración de la estancia (inmigración). Los días usan lecturas japonesas
+// antiguas y casi todas son irregulares: 3 días = mikka, 10 días = tōka.
+export const days = [
+  { id: '3', jp: '3日間', kana: 'みっかかん', romaji: 'mikkakan', es: '3 días', irregular: true },
+  { id: '5', jp: '5日間', kana: 'いつかかん', romaji: 'itsukakan', es: '5 días', irregular: true },
+  { id: '7', jp: '7日間', kana: 'なのかかん', romaji: 'nanokakan', es: '7 días', irregular: true },
+  { id: '10', jp: '10日間', kana: 'とおかかん', romaji: 'tōkakan', es: '10 días', irregular: true },
+  { id: '1w', jp: '1週間', kana: 'いっしゅうかん', romaji: 'isshūkan', es: '1 semana' },
+  { id: '2w', jp: '2週間', kana: 'にしゅうかん', romaji: 'nishūkan', es: '2 semanas' },
+  { id: '3w', jp: '3週間', kana: 'さんしゅうかん', romaji: 'sanshūkan', es: '3 semanas' },
+  { id: '1m', jp: '1か月', kana: 'いっかげつ', romaji: 'ikkagetsu', es: '1 mes' },
+];
+
 // Horas: las generamos con código en lugar de escribir 24 entradas a mano.
 // Ojo a las irregulares: 4時 = yoji (no yonji), 7時 = shichiji, 9時 = kuji.
 const HOUR_KANA = ['いち', 'に', 'さん', 'よ', 'ご', 'ろく', 'しち', 'はち', 'く', 'じゅう', 'じゅういち', 'じゅうに'];
@@ -106,8 +119,8 @@ export const times = HOUR_KANA.flatMap((kana, i) => {
 
 export const slotOptions = {
   station: stations, place: places, allergen: allergens,
-  people, tickets, things, time: times,
+  people, tickets, things, time: times, days,
 };
 
 // Valor inicial de cada hueco si no has elegido otro (si no está aquí, se usa el primero)
-export const slotDefaults = { people: '2', tickets: '2', time: '7' };
+export const slotDefaults = { people: '2', tickets: '2', time: '7', days: '2w' };

@@ -1,7 +1,7 @@
 // Números y precios: #/numeros
 
 import { readNumber, readPrice, MAX_NUMBER } from '../numbers.js';
-import { people, tickets, things, times } from '../data/slots.js';
+import { people, tickets, things, times, days } from '../data/slots.js';
 
 // Tarjetas de un contador (reutiliza el estilo de .num-cell)
 function counterCells(list) {
@@ -30,6 +30,8 @@ function countersSection() {
     <div class="num-grid">${counterCells(tickets)}</div>
     <h3 class="sub-title">Horas · 時 <small>"y media" = 半 (han): 7時半</small></h3>
     <div class="num-grid">${counterCells(wholeHours)}</div>
+    <h3 class="sub-title">Días y semanas · 日間 / 週間 <small>En inmigración: "¿Cuántos días se queda?"</small></h3>
+    <div class="num-grid">${counterCells(days)}</div>
   `;
 }
 

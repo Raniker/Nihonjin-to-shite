@@ -6,7 +6,7 @@
 // Así el navegador detecta un sw.js distinto, descarga todo de nuevo
 // y borra la caché vieja.
 
-const VERSION = 'v8';
+const VERSION = 'v9';
 const CACHE = `nihongo-${VERSION}`;
 
 // Todos los archivos que necesita la app para funcionar offline.

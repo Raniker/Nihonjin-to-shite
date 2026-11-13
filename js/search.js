@@ -1,6 +1,6 @@
 // Buscador de frases.
 
-import { allPhrases } from './data/phrases.js';
+import { categories } from './data/phrases.js';
 import { slotOptions } from './data/slots.js';
 
 // "Estación" → "estacion", "Kyōto" → "kyoto".
@@ -12,15 +12,17 @@ export function normalize(text) {
 }
 
 // Texto donde buscar de cada frase. Lo calculamos una sola vez (al primer uso)
-// en vez de en cada tecla. Incluye las opciones de los huecos: "farmacia"
-// encuentra "¿Dónde está ＿＿?" aunque ahora mismo tenga elegida otra opción.
+// en vez de en cada tecla. Incluye:
+//   - el nombre de su categoría: "aeropuerto" encuentra todas las de Aeropuerto
+//   - las opciones de los huecos: "farmacia" encuentra "¿Dónde está ＿＿?"
+//     aunque ahora mismo tenga elegida otra opción
 let index = null;
 
 function buildIndex() {
-  return allPhrases().map(p => {
+  return categories.flatMap(category => category.phrases.map(p => {
     const options = p.slot ? slotOptions[p.slot].map(o => `${o.jp} ${o.romaji} ${o.es} ${o.name ?? ''}`) : [];
-    return { phrase: p, text: normalize([p.jp, p.romaji, p.es, ...options].join(' ')) };
-  });
+    return { phrase: p, text: normalize([category.name, p.jp, p.romaji, p.es, ...options].join(' ')) };
+  }));
 }
 
 export function searchPhrases(query, limit = 30) {

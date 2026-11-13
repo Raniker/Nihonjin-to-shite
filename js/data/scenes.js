@@ -9,6 +9,27 @@
 
 export const scenes = [
   {
+    id: 'llegada',
+    name: 'Llegar a Japón (inmigración y aduana)',
+    icon: '✈️',
+    steps: [
+      { they: ['パスポートを見せてください', 'Muéstreme su pasaporte, por favor'] },
+      { me: { jp: 'はい、どうぞ', romaji: 'hai, dōzo', es: 'Sí, aquí tiene' } },
+      { they: ['入国の目的は何ですか？', '¿Cuál es el motivo de su visita?'] },
+      { me: 'aer-05' },
+      { they: ['何日滞在しますか？', '¿Cuántos días se queda?'] },
+      { me: 'aer-06' },
+      { they: ['どこに泊まりますか？', '¿Dónde se aloja?'] },
+      { me: 'aer-07' },
+      { they: ['指紋と顔写真を撮ります', 'Le tomamos las huellas y una foto'] },
+      { me: 'con-05' },
+      { they: ['申告するものはありますか？', '¿Tiene algo que declarar?'] },
+      { me: 'aer-08' },
+      { they: ['どうぞ。ようこそ日本へ', 'Adelante. Bienvenido a Japón'] },
+      { me: 'con-07' },
+    ],
+  },
+  {
     id: 'restaurante',
     name: 'Cenar en un restaurante',
     icon: '🍜',

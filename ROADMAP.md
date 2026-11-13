@@ -71,6 +71,12 @@ Leyenda: ✅ hecho · 🚧 en curso · ⏳ pendiente · 💡 idea para más adel
 - [x] **Escenas guiadas** 🎭: 5 conversaciones completas (restaurante, hotel, tren, farmacia, taxi) para destapar línea a línea
 - [x] Las vistas pueden definir `mount()` para preparar cosas tras pintarse
 
+## ✅ Fase 10 — Aeropuerto
+- [x] Categoría ✈️ Aeropuerto (13 frases): inmigración, aduana, equipaje, transporte al centro, SIM/Wi-Fi, facturar, embarque y retrasos
+- [x] Contador de días y semanas (日間 / 週間) con sus lecturas irregulares, también en Números
+- [x] Escena "Llegar a Japón" (inmigración y aduana)
+- [x] El buscador también busca por nombre de categoría
+
 ## 💡 Ideas para el futuro
 - [ ] Orden de trazos al escribir kana (necesita datos de trazos, p. ej. KanjiVG)
 - [ ] Más escenas (onsen, templo, tienda, objeto perdido)

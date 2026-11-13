@@ -9,7 +9,7 @@ PWA para aprender japonés básico de cara a un viaje de turismo y para usarla *
 ## Funciones
 
 ### Frases por categoría
-Restaurante 🍜, Tren 🚄, Taxi 🚕, Hotel 🏨, Tiendas 🛍️, Farmacia 💊, Direcciones 🧭, Onsen ♨️, Templos ⛩️, Emergencias 🚨 y Responder 🙋: 103 frases, cada una con japonés, romaji y traducción al español.
+Aeropuerto ✈️, Restaurante 🍜, Tren 🚄, Taxi 🚕, Hotel 🏨, Tiendas 🛍️, Farmacia 💊, Direcciones 🧭, Onsen ♨️, Templos ⛩️, Emergencias 🚨 y Responder 🙋: 120 frases, cada una con japonés, romaji y traducción al español.
 
 Algunas frases tienen un **hueco que puedes cambiar**:
 - "Un billete a ＿＿" (17 estaciones)
@@ -47,7 +47,7 @@ Tablas de hiragana y katakana (básicos, con tenten/maru y combinados). Toca un 
 Dibuja con el dedo el kana que se pide. Puedes activar una guía para calcarlo. Al comprobar, la app compara tu dibujo con el carácter modelo: mira la forma, no el orden de los trazos.
 
 ### Escenas 🎭
-Cinco conversaciones completas: restaurante, hotel, tren, farmacia y taxi.
+Seis conversaciones completas: llegada a Japón (inmigración y aduana), restaurante, hotel, tren, farmacia y taxi.
 - Lo que te dicen aparece en japonés, con audio. Intenta entenderlo antes de destaparlo.
 - Lo que dices tú aparece en español. Intenta decirlo en japonés antes de destaparlo.
 

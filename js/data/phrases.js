@@ -52,6 +52,68 @@ const emergencyCareReplies = [
 
 export const categories = [
   {
+    id: 'aeropuerto',
+    name: 'Aeropuerto',
+    icon: '✈️',
+    phrases: [
+      // --- Al llegar: inmigración y aduana ---
+      { id: 'aer-05', jp: '観光です', romaji: 'kankō desu', es: 'Vengo por turismo', replies: [
+        r('何日滞在しますか？', '¿Cuántos días se queda?', ['aer-06']),
+        r('どこに泊まりますか？', '¿Dónde se aloja?', ['aer-07']),
+        r('帰りの航空券はありますか？', '¿Tiene billete de vuelta?', ['con-01', 'con-33']),
+      ] },
+      { id: 'aer-06', slot: 'days', jp: '{days}です', romaji: '{days} desu', es: 'Me quedo {days}', replies: [
+        r('どこに泊まりますか？', '¿Dónde se aloja?', ['aer-07']),
+        r('指紋と顔写真を撮ります', 'Le tomamos las huellas y una foto', ['con-05']),
+      ] },
+      { id: 'aer-07', jp: 'ホテルに泊まります', romaji: 'hoteru ni tomarimasu', es: 'Me alojo en un hotel', replies: [
+        r('ホテルの名前は何ですか？', '¿Cómo se llama el hotel?', ['con-08']),
+        r('こちらに書いてください', 'Escríbalo aquí, por favor', ['con-05']),
+      ] },
+      { id: 'aer-08', jp: '申告するものはありません', romaji: 'shinkoku suru mono wa arimasen', es: 'No tengo nada que declarar', replies: [
+        r('どうぞ', 'Adelante', ['con-07']),
+        r('スーツケースを開けてください', 'Abra la maleta, por favor', ['con-05']),
+      ] },
+      { id: 'aer-09', jp: '荷物が出てきません', romaji: 'nimotsu ga dete kimasen', es: 'Mi equipaje no ha salido', replies: [
+        r('手荷物引換証を見せてください', 'Muéstreme el resguardo del equipaje', ['con-05']),
+        r('あちらのカウンターへどうぞ', 'Vaya a ese mostrador, por favor', ['con-07']),
+        r('ホテルに届けます', 'Se lo enviaremos al hotel', ['con-07']),
+      ] },
+      { id: 'aer-10', jp: '市内へはどう行けばいいですか？', romaji: 'shinai e wa dō ikeba ii desu ka?', es: '¿Cómo voy al centro de la ciudad?', replies: [
+        r('電車が一番速いです', 'El tren es lo más rápido', ['tre-01']),
+        r('リムジンバスがあります', 'Hay autobús al centro (limousine bus)', ['dir-08']),
+        r('タクシーは高いです', 'El taxi es caro', ['con-05']),
+      ] },
+      { id: 'aer-11', jp: 'SIMカードはどこで買えますか？', romaji: 'shimu kādo wa doko de kaemasu ka?', es: '¿Dónde puedo comprar una tarjeta SIM?', replies: [
+        r('あちらのカウンターです', 'En ese mostrador', ['con-07']),
+        r('自動販売機があります', 'Hay una máquina expendedora', ['con-07']),
+      ] },
+      { id: 'aer-12', jp: 'ポケットWi-Fiを予約しています', romaji: 'poketto waifai o yoyaku shite imasu', es: 'Tengo reservado un pocket Wi-Fi', replies: [
+        r('お名前をお願いします', 'Su nombre, por favor', ['con-08']),
+        r('パスポートを見せてください', 'Muéstreme su pasaporte, por favor', ['con-05']),
+      ] },
+      // --- Al salir: facturar y embarcar ---
+      { id: 'aer-01', jp: 'チェックインカウンターはどこですか？', romaji: 'chekku-in kauntā wa doko desu ka?', es: '¿Dónde está el mostrador de facturación?', replies: directionReplies },
+      { id: 'aer-02', jp: '荷物を預けたいです', romaji: 'nimotsu o azuketai desu', es: 'Quiero facturar el equipaje', replies: [
+        r('パスポートをお願いします', 'Su pasaporte, por favor', ['con-05']),
+        r('お荷物は何個ですか？', '¿Cuántas maletas tiene?', ['con-08']),
+        r('重量オーバーです', 'Tiene exceso de peso', ['tie-01']),
+        r('窓側と通路側、どちらがいいですか？', '¿Ventanilla o pasillo?', ['con-10', 'con-11']),
+      ] },
+      { id: 'aer-03', jp: '搭乗口はどこですか？', romaji: 'tōjōguchi wa doko desu ka?', es: '¿Dónde está la puerta de embarque?', replies: directionReplies },
+      { id: 'aer-04', jp: 'この便は遅れていますか？', romaji: 'kono bin wa okurete imasu ka?', es: '¿Este vuelo va con retraso?', replies: [
+        r('定刻です', 'Sale a su hora', ['con-07']),
+        r('30分遅れています', 'Va con 30 minutos de retraso', ['con-05']),
+        r('欠航です', 'Está cancelado', ['aer-13']),
+      ] },
+      { id: 'aer-13', jp: '次の便に変更できますか？', romaji: 'tsugi no bin ni henkō dekimasu ka?', es: '¿Puedo cambiar al siguiente vuelo?', replies: [
+        r('空席があります', 'Hay plazas libres', ['con-01']),
+        r('満席です', 'Está lleno', ['con-05']),
+        r('あちらのカウンターでお願いします', 'Hágalo en ese mostrador, por favor', ['con-07']),
+      ] },
+    ],
+  },
+  {
     id: 'restaurante',
     name: 'Restaurante',
     icon: '🍜',
