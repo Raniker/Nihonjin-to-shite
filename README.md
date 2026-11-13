@@ -2,7 +2,9 @@
 
 PWA para aprender japonés básico de cara a un viaje de turismo y para usarla **como herramienta de comunicación** durante el viaje. Pensada para el celular Android.
 
-> Estado: en desarrollo. Ver [ROADMAP.md](ROADMAP.md) para lo hecho, lo que está en curso y lo pendiente.
+**👉 Abrir la app: https://raniker.github.io/Nihonjin-to-shite/**. En Android, ⋮ → *Instalar app*.
+
+> Consulta [ROADMAP.md](ROADMAP.md) para ver lo hecho y las próximas ideas.
 
 ## Funciones
 
