@@ -344,6 +344,73 @@ main:has(#hide-romaji:checked) .k-romaji { visibility: hidden; }
 .p-kanji { font-size: 1.2rem; }
 .p-romaji { color: var(--accent); font-style: italic; }
 
+/* ---------- Quiz ---------- */
+:root { --ok: #2e9d5b; }
+
+.card .due { color: var(--accent); }
+
+.q-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0 16px;
+  font-size: .85rem;
+  color: var(--muted);
+}
+.bar { flex: 1; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+.bar > div { height: 100%; background: var(--accent); transition: width .3s; }
+
+.q-ask { margin: 0 0 4px; color: var(--muted); }
+.q-prompt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 120px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+.q-text { margin: 0; font-size: clamp(1.6rem, 8vw, 2.6rem); font-weight: 700; line-height: 1.3; }
+.speak-btn.big { width: 96px; height: 96px; font-size: 2.4rem; }
+
+.options { display: grid; gap: 8px; }
+.option {
+  display: flex;
+  flex-direction: column;
+  padding: 14px 16px;
+  text-align: left;
+  font: inherit;
+  font-size: 1.15rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.option small { font-size: .85rem; color: var(--muted); }
+/* Los botones disabled salen grises por defecto: mantenemos el color normal */
+.option:disabled { color: var(--text); cursor: default; }
+.option.correct { border-color: var(--ok); background: color-mix(in srgb, var(--ok) 14%, var(--surface)); }
+.option.wrong { border-color: var(--accent); background: var(--accent-soft); }
+
+.feedback {
+  display: grid;
+  gap: 8px;
+  margin: 16px 0 32px;
+  padding: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.feedback.ok strong { color: var(--ok); }
+.feedback.ko strong { color: var(--accent); }
+.explain-line { color: var(--muted); }
+
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+
+.summary-score { margin: 24px 0 0; font-size: 3rem; font-weight: 700; text-align: center; }
+.summary-actions { display: grid; gap: 8px; margin-top: 24px; text-align: center; }
+
 .notice {
   padding: 12px;
   margin-bottom: 16px;

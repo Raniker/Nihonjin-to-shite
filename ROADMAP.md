@@ -24,10 +24,12 @@ Leyenda: ✅ hecho · 🚧 en curso · ⏳ pendiente · 💡 idea para más adel
 - [x] Números del 0 al 99.999.999 generados por código, con irregulares (300, 600, 800, 3000, 8000)
 - [x] Conversor de precios en yenes, con el caso especial 4円 → *yo en*
 
-## ⏳ Fase 3 — Quiz con repaso espaciado
-- [ ] Preguntas sobre frases, kana y números
-- [ ] Repaso espaciado (las tarjetas que fallas vuelven antes)
-- [ ] Progreso guardado en el celular
+## ✅ Fase 3 — Quiz con repaso espaciado
+- [x] 4 mazos generados desde los datos: frases (japonés↔español), hiragana, katakana, números y precios
+- [x] Preguntas de opción múltiple, incluidas preguntas de solo audio (números y precios)
+- [x] Sistema Leitner: cajas 0–5 con 1, 2, 4, 8 y 16 días; las falladas se repiten en la ronda
+- [x] Rondas de hasta 10 tarjetas con un máximo de 5 nuevas; repaso anticipado si no hay pendientes
+- [x] Progreso guardado en `localStorage`, con estadísticas por mazo
 
 ## ⏳ Fase 4 — PWA instalable y offline
 - [ ] `manifest.json` + iconos

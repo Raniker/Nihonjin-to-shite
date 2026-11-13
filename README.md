@@ -26,6 +26,13 @@ Tablas de hiragana y katakana (básicos, con tenten/maru y combinados). Toca un 
 ### Números y precios
 Números de referencia con kanji, kana y romaji; los irregulares van destacados. Incluye un **conversor de precios**: escribes `3500` y muestra 3,500円 → 三千五百円 → さんぜんごひゃくえん → *sanzen gohyaku en*, con audio. El botón 🎲 genera precios al azar para practicar.
 
+### Quiz con repaso espaciado 🧠
+Cuatro mazos: frases (en los dos sentidos), hiragana, katakana, y números y precios, con preguntas de "¿qué precio oyes?". Funciona con el **sistema Leitner**:
+- Si aciertas, la tarjeta vuelve en 1, 2, 4, 8 y luego 16 días.
+- Si fallas, se repite en la misma ronda.
+
+Cada ronda junta las tarjetas pendientes con hasta 5 nuevas. El progreso se guarda en el celular.
+
 ### Favoritas ⭐
 Marca las frases que más usas y aparecerán al principio de la pantalla de inicio. Se guardan en el celular (`localStorage`).
 
@@ -49,7 +56,11 @@ index.html             página única (SPA)
 css/styles.css         estilos, tema claro/oscuro automático
 js/app.js              router por hash (#/...) y eventos globales
 js/speech.js           síntesis de voz (Web Speech API)
-js/favorites.js        favoritas en localStorage
+js/storage.js          leer/guardar JSON en localStorage de forma segura
+js/favorites.js        favoritas
+js/srs.js              repaso espaciado (sistema Leitner)
+js/decks.js            mazos del quiz generados a partir de los datos
+js/utils.js            utilidades (barajar)
 js/numbers.js          conversión de números y precios a japonés
 js/data/phrases.js     frases y respuestas (solo datos)
 js/data/kana.js        tablas de hiragana y katakana

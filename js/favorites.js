@@ -1,26 +1,12 @@
-// Favoritas guardadas en localStorage.
-// localStorage es un almacén clave → texto que vive en el navegador del celular
-// y sobrevive a cerrar la app. Solo guarda strings, por eso usamos JSON.
+// Favoritas guardadas en localStorage (ver storage.js).
+
+import { loadJSON, saveJSON } from './storage.js';
 
 const KEY = 'favorites';
 
-function load() {
-  // try/catch: localStorage puede fallar (modo incógnito, datos corruptos...)
-  try {
-    return new Set(JSON.parse(localStorage.getItem(KEY)) ?? []);
-  } catch {
-    return new Set();
-  }
-}
-
-// Un Set es como un array sin duplicados, con has/add/delete rápidos
-const favorites = load();
-
-function save() {
-  try {
-    localStorage.setItem(KEY, JSON.stringify([...favorites]));
-  } catch { /* sin almacenamiento: las favoritas duran solo esta sesión */ }
-}
+// Un Set es como un array sin duplicados, con has/add/delete rápidos.
+// localStorage solo guarda texto: guardamos el Set como array JSON.
+const favorites = new Set(loadJSON(KEY, []));
 
 export function isFavorite(id) {
   return favorites.has(id);
@@ -29,7 +15,7 @@ export function isFavorite(id) {
 export function toggleFavorite(id) {
   if (favorites.has(id)) favorites.delete(id);
   else favorites.add(id);
-  save();
+  saveJSON(KEY, [...favorites]);
 }
 
 export function favoriteIds() {

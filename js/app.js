@@ -5,6 +5,7 @@ import { phrasesView } from './views/phrases.js';
 import { showView } from './views/show.js';
 import { kanaView } from './views/kana.js';
 import { numbersView, priceOutput, randomPrice } from './views/numbers.js';
+import { quizView, answerQuiz, nextQuiz, restartQuiz } from './views/quiz.js';
 import { speak } from './speech.js';
 import { toggleFavorite } from './favorites.js';
 
@@ -14,12 +15,14 @@ import { toggleFavorite } from './favorites.js';
 //   #/mostrar/res-04       → showView('res-04')
 //   #/kana/katakana        → kanaView('katakana')
 //   #/numeros              → numbersView()
+//   #/quiz/hiragana        → quizView('hiragana')
 const routes = {
   '': homeView,
   frases: phrasesView,
   mostrar: showView,
   kana: kanaView,
   numeros: numbersView,
+  quiz: quizView,
 };
 
 const app = document.getElementById('app');
@@ -63,6 +66,11 @@ document.addEventListener('click', (e) => {
 
   const reply = e.target.closest('[data-reply]');
   if (reply) return showAnswer(reply);
+
+  const option = e.target.closest('[data-quiz-answer]');
+  if (option) return answerQuiz(Number(option.dataset.quizAnswer));
+  if (e.target.closest('[data-quiz-next]')) return nextQuiz();
+  if (e.target.closest('[data-quiz-restart]')) return restartQuiz();
 
   const backBtn = e.target.closest('[data-back]');
   if (backBtn) {
